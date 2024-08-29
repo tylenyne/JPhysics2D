@@ -68,7 +68,7 @@ public class WindowManager {
         GLFW.glfwSetKeyCallback(window, (window, key, scanc, action, mods) ->
                 {
                     if(key == GLFW.GLFW_KEY_ESCAPE && action == GLFW.GLFW_RELEASE){
-
+                        GLFW.glfwSetWindowShouldClose(window, true);
                     }
 
                 });
@@ -87,13 +87,13 @@ public class WindowManager {
             GLFW.glfwSwapInterval(1);
         }
 
-        GLFW.glfwShowWindow(window);
+        //This is exactly where glfwshowWindow should be, if no work copy/paste the rest of this method to showWindow
         GL.createCapabilities();
-        this.setClearColor(0.0f, 0.0f, 0f, 0f);
+        this.setClearColor(.05f, .4f, .7f, .2f);
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glEnable(GL11.GL_STENCIL_TEST);
         GL11.glEnable(GL11.GL_CULL_FACE);
-        GL11.glCullFace(GL11.GL_BACK);
+        GL11.glEnable(GL11.GL_BACK);
 
 
 
@@ -161,10 +161,14 @@ public class WindowManager {
         float aspectratio = (float)width/height;
         return projectionMatrix.setPerspective(FOV, aspectratio, zNEAR, zFAR);
     }
-    //@Overload
+    //@Overwrite
     public Matrix4f updateProjectionMatrix(Matrix4f matrix, int width, int height){
         float aspectratio = (float)width/height;
         return matrix.setPerspective(FOV, aspectratio, zNEAR, zFAR);
+    }
+
+    public void showWindow(){
+        GLFW.glfwShowWindow(window);
     }
 
     public void cleanup(){

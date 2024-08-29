@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c2e4546-2eed-4630-b820-b5f6d17fbd10" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/_IGamelogic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/utils/Utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/examGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/EngineManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/EngineManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/WindowManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/WindowManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/utils/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/Launcher.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,21 +73,67 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.COMPFIZ [:Launcher.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.COMPFIZ.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/daaak/Downloads/joml-1.10.5.jar&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/daaak/Downloads/COMPFIZ/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.COMPFIZ [:Launcher.main()].executor": "Run",
+    "Gradle.COMPFIZ [:com.COMPFIZ.underscore.Launcher.main()].executor": "Run",
+    "Gradle.COMPFIZ.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/proto/IdeaProjects/challenge1/COMPFIZ",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/daaak/Downloads/COMPFIZ/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\proto\IdeaProjects\challenge1\COMPFIZ" />
+      <recent name="C:\Users\proto\IdeaProjects\challenge1\COMPFIZ\src" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.COMPFIZ.core" />
+      <recent name="com.COMPFIZ.underscore" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Launcher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.COMPFIZ.underscore.Launcher" />
+      <module name="COMPFIZ.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.COMPFIZ.underscore.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Launcher" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.419" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.419" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -88,7 +142,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1716332166934</updated>
+      <workItem from="1724869315162" duration="9422000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
