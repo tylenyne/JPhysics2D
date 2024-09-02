@@ -5,7 +5,6 @@ import com.COMPFIZ.core.WindowManager;
 import com.COMPFIZ.core.utils.Constants;
 import org.lwjgl.Version;
 import java.util.*;
-import java.net.http.HttpClient;
 
 public class Launcher {//idea- make buffers that only allow inputs every other frame or every 3 frames so that the game feels better
     private static WindowManager winMan;

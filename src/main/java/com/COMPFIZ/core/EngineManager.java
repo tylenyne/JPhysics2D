@@ -48,7 +48,7 @@ public class EngineManager {
         long frameCounter = 0;
         long lastTime = System.nanoTime();
         double unproccessedTime = 0D;
-
+//MainGameLoop-
         while(isRunning){
             boolean render = false;
             long startTime = System.nanoTime();
@@ -99,7 +99,7 @@ public class EngineManager {
 
     private void render(){
         gameLogic.render();
-        winMan.update();
+        winMan.update();//update
     }
 
     private void update(float interval){
