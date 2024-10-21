@@ -1,29 +1,41 @@
 package com.COMPFIZ.core;
 
-import com.COMPFIZ.core.utils.Constants;
+import com.COMPFIZ.core.mixins.Constants;
 import com.COMPFIZ.underscore.Launcher;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWErrorCallback;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.concurrent.LinkedTransferQueue;
+
 public class EngineManager {
-    public static final long NANOSECOND = 1000000000L;
-    public static final float FRAMERATE = 1000f;
+    public static final long NANOSECOND = 1000000000L;//1 second counting in nanoseconds
+    public static final float FRAMERATE = 120f; //Absolute time because only calling game attribs like update(); each defined frame which correspond to time
+    public static double totalTime = 0, absoluteTotalTime = 0;//Outside the games FrameCalls totaltime | Total time entire program has been running
     private static int fps;
     private static float frametime = 1.0f/FRAMERATE;
+    private static float allFrames;
+    //Static
 
     private boolean isRunning;
 
     private WindowManager winMan;
-    private _IGamelogic gameLogic;
+    private IGameLog gameLogic;
     private GLFWErrorCallback errorCallback;
+
+    public static boolean[] eventStream = new boolean[1];
 
     private void init() throws Exception{
         GLFW.glfwSetErrorCallback(this.errorCallback = GLFWErrorCallback.createPrint(System.err));
         winMan = Launcher.getWinMan();
         gameLogic = Launcher.getThisGame();
+        System.out.println("logic made");
         winMan.init();//Trying to initialize window but have control of when to show it. Not really important but its practice
         winMan.showWindow();//Make a function for this string of functions especially if  it gets bigger
+        System.out.println("window shown");
         gameLogic.init();
+
     }
 
     public static int getFps() {
@@ -36,57 +48,63 @@ public class EngineManager {
 
     public void start() throws Exception{
         this.init();
+        System.out.println("Log: Game Environment Made");
         if(isRunning){
             return;
         }
         run();
     }
 
-    public void run(){
+    public void run() {
         this.isRunning = true;
         int frames = 0;
         long frameCounter = 0;
-        long lastTime = System.nanoTime();
+        long lastTime = System.nanoTime();//100000000L
         double unproccessedTime = 0D;
+        allFrames = 0;
 //MainGameLoop-
-        while(isRunning){
-            boolean render = false;
+        while(isRunning){//Running to pass the time
+            boolean render = false;//Update synonym
             long startTime = System.nanoTime();
-            long passedTime = startTime-lastTime;
+            long passedTime = startTime-lastTime;//As a nanosecond long
             lastTime = startTime;
 
-            unproccessedTime+=passedTime/(double)this.NANOSECOND;
+            unproccessedTime+=passedTime/(double)this.NANOSECOND; //5000000000L -> 5 seconds
             frameCounter+=passedTime;
+            totalTime =  allFrames*frametime;//120*1/120 = 1 sec
 
-            input();
 
-            while(unproccessedTime > frametime){
+            input();//Outside render so you can input between frames
+
+            while(unproccessedTime > frametime){//If unproccesed is 1/120 it would runonce
                 render = true;
                 unproccessedTime-=frametime;
 
                 if(winMan.windowShouldClose()){
-                    this.stop();
+                    this.endProgram();
                 }
 
-                if(frameCounter >= NANOSECOND){
+                if(frameCounter >= NANOSECOND){//FPS
                     this.setFps(frames);
                     winMan.setTitle(Constants.TITLE +" Fps:"  + getFps());
                     frames = 0;
                     frameCounter = 0L;
+                    eventStream = new boolean[1];
                 }
             }
 
-            if(render){
+            if(render){//Happens every time
                 update(frametime);
                 render();
                 frames++;
+                allFrames++;
             }
 
         }
         this.cleanup();
     }
 
-    private void stop(){
+    private void endProgram(){
         if(!this.isRunning){
             return;
         }
@@ -102,7 +120,7 @@ public class EngineManager {
         winMan.update();//update
     }
 
-    private void update(float interval){
+    private void update(float interval) {
         gameLogic.update(interval);
     }
 
@@ -112,4 +130,5 @@ public class EngineManager {
         errorCallback.free();
         GLFW.glfwTerminate();
     }
+
 }

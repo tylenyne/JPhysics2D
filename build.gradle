@@ -1,12 +1,12 @@
 plugins {
     id("java")
 }
-project.ext.lwjglVersion = "3.3.3"
+project.ext.lwjglVersion = "3.3.4"
 project.ext.lwjglNatives = "natives-windows"
 project.ext.jomlVersion = "1.10.5"
 project.ext.jomlPrimVersion = "1.10.5"
 //default: 1.10.0 if error, 1.10.5 is latest
-group = "org.example"
+group = "com.COMPFIZ"
 version = "1.0-SNAPSHOT"
 
 repositories {

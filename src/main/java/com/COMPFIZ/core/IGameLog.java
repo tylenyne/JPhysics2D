@@ -1,6 +1,6 @@
 package com.COMPFIZ.core;
 
-public interface _IGamelogic {
+public interface IGameLog {
 
     void init() throws Exception;
     void input();
@@ -8,4 +8,5 @@ public interface _IGamelogic {
     void render();
     void cleanup();
 
+    GPURenderer getRenderer();
 }
