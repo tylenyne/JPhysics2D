@@ -5,12 +5,8 @@ import com.COMPFIZ.underscore.Launcher;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWErrorCallback;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.concurrent.LinkedTransferQueue;
-
-public class EngineManager {
-    public static final long NANOSECOND = 1000000000L;//1 second counting in nanoseconds
+public class EventHandler {
+    public static final long SECOND = 1000000000L/1;//1 second counting in nanoseconds
     public static final float FRAMERATE = 120f; //Absolute time because only calling game attribs like update(); each defined frame which correspond to time
     public static double totalTime = 0, absoluteTotalTime = 0;//Outside the games FrameCalls totaltime | Total time entire program has been running
     private static int fps;
@@ -18,10 +14,10 @@ public class EngineManager {
     private static float allFrames;
     //Static
 
-    private boolean isRunning;
+    public static boolean isRunning;
 
     private WindowManager winMan;
-    private IGameLog gameLogic;
+    private Disc gameLogic;
     private GLFWErrorCallback errorCallback;
 
     public static boolean[] eventStream = new boolean[1];
@@ -30,12 +26,9 @@ public class EngineManager {
         GLFW.glfwSetErrorCallback(this.errorCallback = GLFWErrorCallback.createPrint(System.err));
         winMan = Launcher.getWinMan();
         gameLogic = Launcher.getThisGame();
-        System.out.println("logic made");
         winMan.init();//Trying to initialize window but have control of when to show it. Not really important but its practice
         winMan.showWindow();//Make a function for this string of functions especially if  it gets bigger
-        System.out.println("window shown");
         gameLogic.init();
-
     }
 
     public static int getFps() {
@@ -43,7 +36,7 @@ public class EngineManager {
     }
 
     public static void setFps(int fps) {
-        EngineManager.fps = fps;
+        EventHandler.fps = fps;
     }
 
     public void start() throws Exception{
@@ -69,7 +62,7 @@ public class EngineManager {
             long passedTime = startTime-lastTime;//As a nanosecond long
             lastTime = startTime;
 
-            unproccessedTime+=passedTime/(double)this.NANOSECOND; //5000000000L -> 5 seconds
+            unproccessedTime+=passedTime/(double) SECOND; //5000000000L -> 5 seconds
             frameCounter+=passedTime;
             totalTime =  allFrames*frametime;//120*1/120 = 1 sec
 
@@ -84,7 +77,7 @@ public class EngineManager {
                     this.endProgram();
                 }
 
-                if(frameCounter >= NANOSECOND){//FPS
+                if(frameCounter >= SECOND){//FPS
                     this.setFps(frames);
                     winMan.setTitle(Constants.TITLE +" Fps:"  + getFps());
                     frames = 0;

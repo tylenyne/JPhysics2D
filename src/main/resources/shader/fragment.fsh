@@ -2,6 +2,8 @@
 
 in vec3 color;
 
+uniform vec3 light;//COLOR
+
 out vec4 fragColor;
 
 

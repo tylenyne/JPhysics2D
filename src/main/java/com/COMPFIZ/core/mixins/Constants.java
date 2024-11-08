@@ -11,13 +11,15 @@ public class Constants {
     public static final float DEFAULTSCALE = 1;
     //public static class Color;
     public static final int MAX_SPOTLIGHTS = 5;
+    public static int masses = 2;
     public static final int MAX_POINTLIGHTS = 5;
     public static final Vector4f DEFAULT_COLOR = new Vector4f(1.0f, 1.0f, 1.0f, 1.0f);
     public static final Vector3f AMBIENT_LIGHT = new Vector3f(.2f, .2f, .2f);
     public static final float SPECULAR_POWER = 10f;
-    public static final Vector3f STDDIR = new Vector3f(1, -1, 1);
-    public static final Vector3f SOG = new Vector3f(0, 9.8f, 0).mul(STDDIR);
-    public static final float field = 1/2000f;
+    public static final Vector3f STDDIR = new Vector3f(0, -1, 0);
+    public static final float SOG = 9.8f;
+    public static final Vector3f FOG = (STDDIR.mul(SOG, new Vector3f()));
+    public static final float field = 1/4000000f;
     public static final float STDWEIGHT = 1;
     public static final float STDRHO = 1.225f;
     public static final Vector3f STDCOLOR = new Vector3f(0f, 0f, 0.0f);

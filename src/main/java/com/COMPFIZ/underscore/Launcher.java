@@ -1,6 +1,7 @@
 package com.COMPFIZ.underscore;
 
-import com.COMPFIZ.core.EngineManager;
+import com.COMPFIZ.core.Disc;
+import com.COMPFIZ.core.EventHandler;
 import com.COMPFIZ.core.Loader;
 import com.COMPFIZ.core.WindowManager;
 import com.COMPFIZ.core.mixins.Constants;
@@ -10,7 +11,7 @@ import org.lwjgl.Version;
 public class Launcher {//idea- make buffers that only allow inputs every other frame or every 3 frames so that the game feels better
     private static WindowManager winMan;
     private static Loader loader;
-    private static examGame thisGame;//should be able to switch class to switch game
+    private static Disc thisGame;//should be able to switch class to switch game
     private static ShaderForge shaderForge;
 
 
@@ -18,8 +19,8 @@ public class Launcher {//idea- make buffers that only allow inputs every other f
         System.out.println(Version.getVersion());
         winMan = new WindowManager(Constants.TITLE, 1600, 900, false);
         loader = new Loader();
-        thisGame = new examGame();
-        EngineManager EM = new EngineManager();
+        thisGame = new Orbit2D();
+        EventHandler EM = new EventHandler();
         try {
             EM.start();
         } catch (Exception e) {
@@ -31,7 +32,7 @@ public class Launcher {//idea- make buffers that only allow inputs every other f
         return winMan;
     }
 
-    public static examGame getThisGame() {
+    public static Disc getThisGame() {
         return thisGame;
     }
     //Leave Loader in examGame class because I only use it there

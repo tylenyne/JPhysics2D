@@ -1,37 +1,41 @@
 package com.COMPFIZ.core.shaders;
 
+import com.COMPFIZ.core.GPURenderer;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL21;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
 
-import java.nio.FloatBuffer;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 public class ShaderForge {
 
-        private final int programID;
-        private int vertexShaderID, fragmentShaderID;
+        private static int programID;//Should be final
+        private static int vertexShaderID, fragmentShaderID;
 
-        public ShaderForge() throws Exception {
+        public static void _init() throws Exception {
             programID = GL20.glCreateProgram();
-            if(programID == 0) {
+            if(programID == 0){
                 throw new Exception("Failed to generate shader");
             }
-
+            createVertexShader(loadResource("/shader/vertex.vsh"));
+            createFragmentShader(loadResource("/shader/fragment.fsh"));
+            link();
         }
 
-        public void createVertexShader(String shaderCode) throws Exception {
+        public static void createVertexShader(String shaderCode) throws Exception {
             vertexShaderID = createShader(shaderCode, GL20.GL_VERTEX_SHADER);
         }
 
-        public void createFragmentShader(String shaderCode) throws Exception {
+        public static void createFragmentShader(String shaderCode) throws Exception {
             fragmentShaderID = createShader(shaderCode, GL20.GL_FRAGMENT_SHADER);
         }
 
-        public int createShader(String shaderCode, int shaderType) throws Exception {
+        private static int createShader(String shaderCode, int shaderType) throws Exception {
             int shaderID = GL20.glCreateShader(shaderType);
             if(shaderID == 0)
                 throw new Exception("Failed to generate shader of type " + shaderType);
@@ -48,7 +52,7 @@ public class ShaderForge {
             return shaderID;
         }
 
-        public void link() throws Exception {
+        private static void link() throws Exception {
             GL21.glLinkProgram(programID);
             if(GL20.glGetProgrami(programID, GL20.GL_LINK_STATUS) == 0) {
                 throw new Exception("Failed to link shader of type : " + GL20.glGetProgramInfoLog(programID, 1024));
@@ -67,7 +71,7 @@ public class ShaderForge {
         }
 
         //Gets Uniforms
-        public int createUniform(String uniformName) throws Exception {
+        public static int createUniform(String uniformName) throws Exception {
             int uniformLOC = GL20.glGetUniformLocation(programID, uniformName);//int Pointer
             if (uniformLOC < 0) {
                 throw new Exception("Could not find Uniform " + uniformName);
@@ -75,40 +79,49 @@ public class ShaderForge {
             return uniformLOC;
         }
         //In videos they were protected
-        public int getUniformLOC(String uniformName) {
+        static int getUniformLOC(String uniformName) {
             return GL20.glGetUniformLocation(programID, uniformName);
         }
 
-        public void setUniform1f(int location, float value) {
+        public static void setUniform1f(int location, float value) {
             GL30.glUniform1f(location, value);
         }
 
-        public void setUniformv3f(int location, Vector3f value) {
+        public static void setUniformv3f(int location, Vector3f value) {
             GL30.glUniform3f(location, value.x, value.y, value.z);
         }
 
-        public void setUniform1i(int location, int value) {
+        public static void setUniform1i(int location, int value) {
             GL30.glUniform1i(location, value);
         }
 
-        public void setUniformMatrix(int location, Matrix4f matrix) {
+        public static void setUniformMatrix(int location, Matrix4f matrix) {
             try(MemoryStack stack = MemoryStack.stackPush()){
                 GL20.glUniformMatrix4fv(location, false, matrix.get(stack.mallocFloat(16)));
             }
         }
 
+        public static String loadResource(String filename) throws Exception {
+            String result;
+            try(InputStream in = GPURenderer.class.getResourceAsStream(filename);
+                Scanner scanner = new Scanner(in, StandardCharsets.UTF_8.name())) {
+                result = scanner.useDelimiter("\\A").next();
+            }
+            return result;
+    }
 
-        public void bind(){
+
+        public static void connect(){
             GL20.glUseProgram(programID);
         }
 
-        public void unbind(){
+        public static void disconnect(){
             GL20.glUseProgram(0);
         }
 
 
-        public void cleanup(){
-            unbind();
+        public static void cleanup(){
+            disconnect();
             if (programID != 0)
                 GL20.glDeleteProgram(programID);
         }

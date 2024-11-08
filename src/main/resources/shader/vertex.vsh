@@ -8,6 +8,8 @@ uniform mat4 transformationMatrix;
 
 uniform vec3 uColor;
 
+uniform vec3 light;//POSITION
+
 uniform mat4 projectionMatrix;//Move to different file if needed
 
 void main(void){//projectionMatrix *

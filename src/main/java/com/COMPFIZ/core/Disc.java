@@ -1,6 +1,8 @@
 package com.COMPFIZ.core;
 
-public interface IGameLog {
+import java.io.IOException;
+
+public interface Disc {
 
     void init() throws Exception;
     void input();

@@ -4,25 +4,26 @@ import org.joml.Vector3f;
 
 public class Entity extends StillModel {
     //Fields-
-    public Vector3f translation = new Vector3f(), rotation = new Vector3f(), scale = new Vector3f(1f);
-    public Vector3f color = new Vector3f(1f, 1f, 1f);
+    public Vector3f position = new Vector3f(), rotation = new Vector3f(), scale = new Vector3f(1f);
+    public Vector3f color = new Vector3f();
+    public Descriptors desc;
 
     //More constructors but all Vec3fs
-    public Entity(int vaoID, int vcount, Vector3f translation, Vector3f rotation, float scale) {
+    public Entity(int vaoID, int vcount, Vector3f position, Vector3f rotation, float scale) {
         super(vaoID, vcount);
-        this.translation.set(translation);
+        this.position.set(position);
         this.rotation.set(rotation);
-        this.scale = new Vector3f(scale);//Autosets(scale,scale,scale);
+        this.scale = new Vector3f(scale);
     }
 
     public Entity(StillModel model, Vector3f position){
         super(model.getVaoID(), model.getVcount());
-        translation.set(position);
+        this.position.set(position);
     }
 
     public Entity(Entity entity){
         super(entity.getVaoID(), entity.getVcount());
-        this.translation.set(entity.translation);
+        this.position.set(entity.position);
         this.rotation.set(entity.rotation);
         this.scale.set(entity.scale);
         this.color.set(entity.color);
@@ -30,19 +31,19 @@ public class Entity extends StillModel {
 
     public Entity(StillModel model, Vector3f position, Vector3f color){
         super(model.getVaoID(), model.getVcount());
-        translation.set(position);
+        this.position.set(position);
         this.color.set(color);
     }
 
     public Entity(StillModel stillModel, float offset, float height){
         super(stillModel.getVaoID(), stillModel.getVcount());
-        translation.x = offset;
-        translation.y = height;
+        position.x = offset;
+        position.y = height;
     }
 
-    public Entity(StillModel rawModel, Vector3f translation, Vector3f rotation, Vector3f color, float scale) {
+    public Entity(StillModel rawModel, Vector3f position, Vector3f rotation, Vector3f color, float scale) {
         super(rawModel);
-        this.translation = translation;
+        this.position = position;
         this.rotation = rotation;
         this.scale.set(scale);
         this.color.set(color);
@@ -50,14 +51,14 @@ public class Entity extends StillModel {
 
     public Entity(StillModel model) {
         super(model);
-        translation = new Vector3f(0,0,0);
+        position = new Vector3f(0,0,0);
         rotation = new Vector3f(0,0,0);
         scale = new Vector3f(1,1,1);
     }
 
     //Maybe rename getTranslation
     public Vector3f getPosition() {
-        return translation;
+        return position;
     }
 
     public Vector3f getRotation() {
@@ -73,7 +74,7 @@ public class Entity extends StillModel {
     }
 
     public void incPos(float dx, float dy, float dz) {
-        translation.add(dx, dy, dz);
+        position.add(dx, dy, dz);
     }
 
     public void inRot(float rx, float ry, float rz) {
@@ -85,11 +86,11 @@ public class Entity extends StillModel {
     }
 
     public void setPos(float x, float y, float z) {
-        translation.set(x, y, z);
+        position.set(x, y, z);
     }
 
     public void setPos(Vector3f pos) {
-        translation = pos;
+        position = pos;
     }
 
     public void setColor(float r, float g, float b) {
