@@ -6,7 +6,7 @@ import com.COMPFIZ.core.mixins.Constants;
 import com.COMPFIZ.core.mixins.TriConsumer;
 import com.COMPFIZ.core.mixins.maths.Maths;
 import com.COMPFIZ.core.models.Entity;
-import com.COMPFIZ.core.models.Physics;
+import com.COMPFIZ.core.attributes.Physics;
 import com.COMPFIZ.core.models.StillModel;
 import com.COMPFIZ.core.shaders.Shaders;
 import com.COMPFIZ.core.shaders.myShader;
@@ -61,6 +61,7 @@ public class Orbit2D implements Disc {
         StillModel blockModel = loader.loadOBJ("/OBJs/circle.obj");//Keep forgetting you have to add a slash prefixing path
         StillModel blockModel2 = loader.loadOBJ("/OBJs/circle.obj");
         StillModel blockModel3 = loader.loadOBJ("/OBJs/circle.obj");
+        StillModel blockModel4 = loader.loadOBJ("/OBJs/circle.obj");
 
 
 
@@ -68,13 +69,14 @@ public class Orbit2D implements Disc {
         Entity Earth = new Entity(blockModel);
         Entity Sun = new Entity(blockModel2);
         Entity Moon = new Entity(blockModel3);
+        Entity Mars = new Entity(blockModel3);
 
 
         Earth.color.set(.2f,.8f,.89f);
         Earth.scale.set(1/80f);
-        Earth.desc = new Physics(290000000000f, 200, "Earth");
-        Earth.position.set(-4000000, 0, 0);
-        ((Physics)Earth.desc).v.set(1000f, 5000000f, 0);
+        Earth.physics = new Physics(5.97e6f, 200, "Earth");
+        Earth.position.set(-4.2052e6, 0, 0);
+        ((Physics)Earth.physics).v.set(Maths.triangulate(670000, 45));
 
 
         entities = new Entity[9];
@@ -89,16 +91,20 @@ public class Orbit2D implements Disc {
         updIndex = 3;
 
         //Second mass
-        Sun.color.set(.9f, .8f, .15f);
+        Sun.color.set(.85f, .7f, .2f);
         Sun.scale.set(1/5f);
         Sun.position.set(0, 0,0 );
-        Sun.desc = new Physics(100000000000000000f, 400, "Sun");
+        Sun.physics = new Physics(1.989e15f, 400, "Sun");
 
         Moon.color.set(.69f, .7f, .7f);
         Moon.scale.set(1/80f);
-        Moon.position.set(-4000000, 100000, 0);
-        Moon.desc = new Physics(10000f, 400, "Moon");
-        ((Physics)Moon.desc).v.set(1000f, 5000000f, 0);
+        Moon.position.set(-4.1052e6, 100000, 0);
+        Moon.physics = new Physics(10000f, 400, "Moon");
+        ((Physics)Moon.physics).v.set(Maths.triangulate(670000, 45));
+
+        Mars.color.set(1, .2, .4);
+        Mars.scale.set(1/80f);
+        Mars.position.set(14e6, 0,0);
     }
 
     @Override
@@ -108,10 +114,10 @@ public class Orbit2D implements Disc {
             entities[updIndex] = new Entity(blockmodel);
             entities[updIndex].scale.set(1/80f);
             entities[updIndex].position.set(-4000000, 0, 0);
-            entities[updIndex].desc = new Physics(1f, .125f);
-            ((Physics)entities[updIndex].desc).v.set(Maths.triangulate(1100000f, 90));
+            entities[updIndex].physics = new Physics(1f, .125f);
+            ((Physics)entities[updIndex].physics).v.set(Maths.triangulate(1100000f, 90));
             entities[updIndex].color.set(.3, 0, .5);
-            entities[updIndex].desc.name = "Extra";
+            entities[updIndex].physics.name = "Extra";
 
 
             funcl[updIndex] = gravity::update;

@@ -5,6 +5,7 @@ import com.COMPFIZ.core.models.StillModel;
 import com.COMPFIZ.core.shaders.BasicColor;
 import com.COMPFIZ.core.shaders.ShaderForge;
 import com.COMPFIZ.core.shaders.Shaders;
+import com.COMPFIZ.core.shaders.myShader;
 import com.COMPFIZ.underscore.Launcher;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL30;
@@ -36,11 +37,11 @@ public class GPURenderer {
     public void render(StillModel[] model, Shaders shader) {//New Param Shader
         //this.prepare();
         ShaderForge.connect();
-
+        shader.set((Entity) model[1]);
         for(int i = 0; model[i] != null; i++) {//Make it so if there are duplicate models you only bind to one and process shaders during
             GL30.glBindVertexArray(model[i].getVaoID());
             GL30.glEnableVertexAttribArray(0);
-            shader.use((Entity) model[i]);//for now
+            shader.apply((Entity) model[i]);//for now
             setEntityColor((Entity) model[i]);
             GL30.glDrawElements(GL30.GL_TRIANGLES, model[i].getVcount(), GL11.GL_UNSIGNED_INT, 0);
             GL30.glDisableVertexAttribArray(0);
@@ -55,7 +56,7 @@ public class GPURenderer {
 
 
     public void setEntityColor(Entity entity) {
-        color.use(entity);
+        color.apply(entity);
     }
 
 

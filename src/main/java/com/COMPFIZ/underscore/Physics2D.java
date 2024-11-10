@@ -4,7 +4,7 @@ import com.COMPFIZ.core.*;
 import com.COMPFIZ.core.mixins.Constants;
 import com.COMPFIZ.core.mixins.maths.Maths;
 import com.COMPFIZ.core.models.Entity;
-import com.COMPFIZ.core.models.Physics;
+import com.COMPFIZ.core.attributes.Physics;
 import com.COMPFIZ.core.models.StillModel;
 import com.COMPFIZ.core.actors.Thrower;
 import com.COMPFIZ.core.shaders.myShader;
@@ -81,8 +81,8 @@ public class Physics2D implements Disc {
         myBlock.scale.set(1/80f);
         myBlock.position = Maths.triangulate(pos3fLength, theta);
 
-        myBlock.desc = new Physics(4.2f, .125f, .3f);
-        ((Physics) myBlock.desc).v = Maths.triangulate(330f, theta);
+        myBlock.physics = new Physics(4.2f, .125f, .3f);
+        ((Physics) myBlock.physics).v = Maths.triangulate(330f, theta);
 
         entities = new Entity[9];
         funcl = new BiConsumer[9];
@@ -104,7 +104,7 @@ public class Physics2D implements Disc {
             entities[updIndex] = new Entity(blockModel);
             entities[updIndex].scale.set(1/80f);
             entities[updIndex].position.set(Maths.triangulate(pos3fLength, theta));
-            entities[updIndex].desc = new Physics(10f, .125f);
+            entities[updIndex].physics = new Physics(10f, .125f);
 
             funcl[updIndex] = projectile::update;
             EventHandler.eventStream[0] = true;

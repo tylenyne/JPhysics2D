@@ -1,12 +1,14 @@
 package com.COMPFIZ.core.models;
 
+import com.COMPFIZ.core.attributes.Descriptors;
 import org.joml.Vector3f;
 
 public class Entity extends StillModel {
     //Fields-
     public Vector3f position = new Vector3f(), rotation = new Vector3f(), scale = new Vector3f(1f);
     public Vector3f color = new Vector3f();
-    public Descriptors desc;
+    public Descriptors physics;
+    public Descriptors light;
 
     //More constructors but all Vec3fs
     public Entity(int vaoID, int vcount, Vector3f position, Vector3f rotation, float scale) {

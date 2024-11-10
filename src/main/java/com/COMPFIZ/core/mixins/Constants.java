@@ -19,7 +19,7 @@ public class Constants {
     public static final Vector3f STDDIR = new Vector3f(0, -1, 0);
     public static final float SOG = 9.8f;
     public static final Vector3f FOG = (STDDIR.mul(SOG, new Vector3f()));
-    public static final float field = 1/4000000f;
+    public static final float field = 1/4e6f;
     public static final float STDWEIGHT = 1;
     public static final float STDRHO = 1.225f;
     public static final Vector3f STDCOLOR = new Vector3f(0f, 0f, 0.0f);

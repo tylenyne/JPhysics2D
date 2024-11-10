@@ -9,37 +9,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c2e4546-2eed-4630-b820-b5f6d17fbd10" name="Changes" comment="projectile">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/actors/Gravitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/TriConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/models/Descriptors.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/models/Lighting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/models/Physics.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/BasicColor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/Shaders.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/myShader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/Orbit2D.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/OBJs/circle.obj" afterDir="false" />
+    <list default="true" id="8c2e4546-2eed-4630-b820-b5f6d17fbd10" name="Changes" comment="Added orbit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/attributes/Light.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/EngineManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/EventHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/EventHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/GPURenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/GPURenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/IGameLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/Disc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/Loader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/actors/Gravitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/actors/Gravitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/actors/Thrower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/actors/Thrower.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/maths/Maths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/maths/Maths.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/models/Descriptors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/attributes/Descriptors.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/models/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/models/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/models/PhysicEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/models/Lighting.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/models/Physics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/attributes/Physics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/BasicColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/BasicColor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/ShaderForge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/ShaderForge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/ShaderPM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/ShaderRefact.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/ShaderTM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/ShaderType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/simulations/ISimulation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/simulations/Projectile2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/actors/Thrower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/simulations/Sim.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/simulations/SuperBadClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/Launcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/examGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/Physics2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/Shaders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/Shaders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/myShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/myShader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/Orbit2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/Orbit2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/Physics2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/Physics2D.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/shader/fragment.fsh" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shader/fragment.fsh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/shader/vertex.vsh" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shader/vertex.vsh" afterDir="false" />
     </list>
@@ -124,31 +112,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.COMPFIZ [:Launcher.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.COMPFIZ [:com.COMPFIZ.underscore.Launcher.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.COMPFIZ [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.COMPFIZ.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/proto/Downloads/processing-4.3-windows-x64/processing-4.3/core/library/core.jar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/daaak/Downloads/COMPFIZ/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.COMPFIZ [:Launcher.main()].executor": "Run",
+    "Gradle.COMPFIZ [:com.COMPFIZ.underscore.Launcher.main()].executor": "Run",
+    "Gradle.COMPFIZ [build].executor": "Run",
+    "Gradle.COMPFIZ.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/proto/Downloads/processing-4.3-windows-x64/processing-4.3/core/library/core.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/daaak/Downloads/COMPFIZ/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\proto\IdeaProjects\challenge1\COMPFIZ" />
@@ -272,7 +260,8 @@
       <workItem from="1730382727422" duration="5140000" />
       <workItem from="1730744207876" duration="9572000" />
       <workItem from="1730911638994" duration="32343000" />
-      <workItem from="1731074411747" duration="2802000" />
+      <workItem from="1731074411747" duration="8824000" />
+      <workItem from="1731170785556" duration="17061000" />
     </task>
     <task id="LOCAL-00001" summary="vao">
       <option name="closed" value="true" />
@@ -290,7 +279,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725244062314</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added orbit">
+      <option name="closed" value="true" />
+      <created>1731078957498</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731078957498</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,7 +307,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="vao" />
     <MESSAGE value="vaos" />
-    <option name="LAST_COMMIT_MESSAGE" value="vaos" />
+    <MESSAGE value="Added orbit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added orbit" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

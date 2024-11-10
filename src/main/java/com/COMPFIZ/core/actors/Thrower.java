@@ -2,7 +2,7 @@ package com.COMPFIZ.core.actors;
 
 import com.COMPFIZ.core.mixins.maths.Maths;
 import com.COMPFIZ.core.models.Entity;
-import com.COMPFIZ.core.models.Physics;
+import com.COMPFIZ.core.attributes.Physics;
 import org.joml.Vector3f;
 
 public class Thrower {
@@ -20,7 +20,7 @@ private Vector3f W = new Vector3f();
         boolean onEarth = false;
         float temp = 0, p = 0, relativeRho = .97f;//0.97
         Vector3f force = new Vector3f(), acc = new Vector3f(), airspeed = new Vector3f();
-        Physics pac = (Physics)entity.desc;
+        Physics pac = (Physics)entity.physics;
         /**
         if(onEarth) {
             if (pentity.getPosition().y < 11000) {//Calculate Air Density

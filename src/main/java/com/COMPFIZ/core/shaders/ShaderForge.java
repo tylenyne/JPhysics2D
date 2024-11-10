@@ -71,7 +71,7 @@ public class ShaderForge {
         }
 
         //Gets Uniforms
-        public static int createUniform(String uniformName) throws Exception {
+        public static int loadinUniform(String uniformName) throws Exception {
             int uniformLOC = GL20.glGetUniformLocation(programID, uniformName);//int Pointer
             if (uniformLOC < 0) {
                 throw new Exception("Could not find Uniform " + uniformName);

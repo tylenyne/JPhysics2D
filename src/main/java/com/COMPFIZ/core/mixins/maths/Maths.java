@@ -12,7 +12,7 @@ public class Maths {
                     .rotateX((float) Math.toRadians(rotation.x))
                     .rotateY((float) Math.toRadians(rotation.y))
                     .rotateZ((float) Math.toRadians(rotation.z))
-                    .scale(scale.mul(new Vector3f(9/16f, 1, 1), new Vector3f()));//Because 16:9 resolution
+                    .scale(scale.mul(new Vector3f(1f, 1, 1), new Vector3f()));//Because 16:9 resolution
             return new Transformation(matrix);
         }
 

@@ -1,8 +1,8 @@
-package com.COMPFIZ.core.models;
+package com.COMPFIZ.core.attributes;
 
 import org.joml.Vector3f;
 
-public class Physics extends Descriptors{
+public class Physics extends Descriptors {
     public float mass, r, dc;
     public Vector3f v = new Vector3f();
 

@@ -7,7 +7,7 @@ import org.lwjgl.glfw.GLFWErrorCallback;
 
 public class EventHandler {
     public static final long SECOND = 1000000000L/1;//1 second counting in nanoseconds
-    public static final float FRAMERATE = 120f; //Absolute time because only calling game attribs like update(); each defined frame which correspond to time
+    public static final float FRAMERATE = 120; //Absolute time because only calling game attribs like update(); each defined frame which correspond to time
     public static double totalTime = 0, absoluteTotalTime = 0;//Outside the games FrameCalls totaltime | Total time entire program has been running
     private static int fps;
     private static float frametime = 1.0f/FRAMERATE;

@@ -7,17 +7,17 @@ public class BasicColor extends Shaders{
 
 
     @Override
-    public void use() {
+    public void set(Entity entity) {
 
     }
 
     @Override
-    public void use(Entity entity) {
+    public void apply(Entity entity) {
         ShaderForge.setUniformv3f(colorptr, entity.color);
     }
 
     @Override
     public void load() throws Exception {
-        colorptr = ShaderForge.createUniform("uColor");
+        colorptr = ShaderForge.loadinUniform("uColor");
     }
 }
