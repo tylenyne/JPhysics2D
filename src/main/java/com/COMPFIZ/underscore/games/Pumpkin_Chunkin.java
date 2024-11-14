@@ -1,24 +1,28 @@
-package com.COMPFIZ.underscore;
+package com.COMPFIZ.underscore.games;
 
 import com.COMPFIZ.core.*;
+import com.COMPFIZ.core.actors.Thrower;
+import com.COMPFIZ.core.attributes.Physics;
 import com.COMPFIZ.core.mixins.Constants;
 import com.COMPFIZ.core.mixins.maths.Maths;
 import com.COMPFIZ.core.models.Entity;
-import com.COMPFIZ.core.attributes.Physics;
 import com.COMPFIZ.core.models.StillModel;
-import com.COMPFIZ.core.actors.Thrower;
 import com.COMPFIZ.core.shaders.Shaders;
 import com.COMPFIZ.core.shaders.myShader;
+import com.COMPFIZ.underscore.Launcher;
 import org.joml.Math;
 import org.joml.Vector3f;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL30;
 
 import java.io.IOException;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.function.BiConsumer;
 
-public class Physics2D implements Disc {
+public class Pumpkin_Chunkin implements Disc {
 
 
     private final WindowManager winMan;
@@ -43,7 +47,7 @@ public class Physics2D implements Disc {
     float theta;
 
 
-    public Physics2D() throws Exception{
+    public Pumpkin_Chunkin() throws Exception{
         winMan = Launcher.getWinMan();
         loader = Launcher.getLoader();
         renderer = new GPURenderer();
@@ -76,6 +80,7 @@ public class Physics2D implements Disc {
 
         //ball
         theta = 10f;
+        Constants.field = Constants.physicfield;
 
         Entity myBlock = new Entity(blockModel);
         Entity myGround = new Entity(groundModel);
@@ -89,6 +94,7 @@ public class Physics2D implements Disc {
 
         myBlock.physics = new Physics(4.2f, .125f, .3f);
         ((Physics) myBlock.physics).v = Maths.triangulate(330d, theta);
+        myBlock.physics.name = "Pumpkin";
 
         entities = new Entity[9];
         funcl = new BiConsumer[9];
@@ -127,12 +133,17 @@ public class Physics2D implements Disc {
 
     @Override
     public void update(float interval) {//Add Event-Registry
-        //interval similar to dt
-        //System.out.println(GL30.glGetError());
+        System.out.println("FRAME: " + EventHandler.allFrames);
+        System.out.println("********************************");
 
         for (int f = 0; f < funcl.length; f++){//RealTime
             if(funcl[f] == null) continue;
             funcl[f].accept(interval, entities[f]);
+        }
+        System.out.println();
+        for (int f = 0; f < funcl.length; f++){//RealTime
+            if(funcl[f] == null) continue;
+            System.out.println(((Physics) entities[f].physics).v + " << " + entities[f].physics.name);
         }
 
         if(entities[0].getPosition().y < 0){

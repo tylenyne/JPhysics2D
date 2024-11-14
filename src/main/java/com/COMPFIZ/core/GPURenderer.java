@@ -39,6 +39,7 @@ public class GPURenderer {
         ShaderForge.connect();
         shader.set((Entity) model[0]);
         for(int i = 0; model[i] != null; i++) {//Make it so if there are duplicate models you only bind to one and process shaders during
+            System.out.println("Rendering " + ((Entity) model[i]).physics.name);
             GL30.glBindVertexArray(model[i].getVaoID());
             GL30.glEnableVertexAttribArray(0);
             shader.apply((Entity) model[i]);//for now

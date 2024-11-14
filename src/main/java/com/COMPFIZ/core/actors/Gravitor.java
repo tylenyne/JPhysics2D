@@ -29,5 +29,6 @@ public class Gravitor {
         stuff.v.add(acc.mul(interval));
         planet.position.add(stuff.v.mul(interval, new Vector3d()));
         System.out.println(force + " | " + stuff.name);
+        System.out.println(acc + " \\\\ " + stuff.name);
     }
 }

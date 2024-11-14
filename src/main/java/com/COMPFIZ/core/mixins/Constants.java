@@ -11,6 +11,8 @@ public class Constants {
     public static final float DEFAULTSCALE = 1;
     //public static class Color;
     public static final int MAX_SPOTLIGHTS = 5;
+    public static double field;
+    public static final float moongravity = 1.62f;
     public static int masses = 2;
     public static final int MAX_POINTLIGHTS = 5;
     public static final Vector4f DEFAULT_COLOR = new Vector4f(1.0f, 1.0f, 1.0f, 1.0f);
@@ -18,9 +20,11 @@ public class Constants {
     public static final float SPECULAR_POWER = 10f;
     public static final Vector3f STDDIR = new Vector3f(0, -1, 0);
     public static final float SOG = 9.8f;
-    public static final Vector3f FOG = (STDDIR.mul(SOG, new Vector3f()));
+    public static final Vector3f EOG = (STDDIR.mul(SOG, new Vector3f()));
+    public static Vector3f FOG = EOG;
     public static final float orbitfield = 1/4.545e5f;
     public static final float physicfield = 1/400f;
+    public static final Vector3f MOG = (STDDIR.mul(moongravity, new Vector3f()));
     public static final float STDWEIGHT = 1;
     public static final float STDRHO = 1.225f;
     public static final Vector3f STDCOLOR = new Vector3f(0f, 0f, 0.0f);

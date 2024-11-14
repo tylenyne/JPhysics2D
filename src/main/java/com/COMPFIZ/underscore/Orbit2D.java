@@ -17,7 +17,7 @@ import org.lwjgl.opengl.GL30;
 import java.io.IOException;
 import java.nio.file.*;
 
-public class Orbit2D implements Disc {
+public class Orbit2D implements Disc{
 
     private final WindowManager winMan;
     private final Loader loader;
@@ -58,6 +58,8 @@ public class Orbit2D implements Disc {
 
         float[] blockPoints = Constants.block;
         int[] blockindices = new int[]{0,1,2,3,4,5};
+
+        Constants.field = Constants.orbitfield;
 
         StillModel blockModel = loader.loadOBJ("/OBJs/circle.obj");//Keep forgetting you have to add a slash prefixing path
         StillModel blockModel2 = loader.loadOBJ("/OBJs/circle.obj");
@@ -111,9 +113,9 @@ public class Orbit2D implements Disc {
             StillModel blockmodel = loader.loadOBJ("/OBJs/circle.obj");
             entities[updIndex] = new Entity(blockmodel);
             entities[updIndex].scale.set(1/80f);
-            entities[updIndex].position.set(-4000000, 0, 0);
+            entities[updIndex].position.set(-40000000d, 0, 0);
             entities[updIndex].physics = new Physics(1f, .125f);
-            ((Physics)entities[updIndex].physics).v.set(Maths.triangulate(1100000f, 90));
+            ((Physics)entities[updIndex].physics).v.set(Maths.triangulate(00f, 90));
             entities[updIndex].color.set(.3, 0, .5);
             entities[updIndex].physics.name = "Extra";
 
@@ -132,6 +134,12 @@ public class Orbit2D implements Disc {
             if(funcl[f] == null) continue;
             funcl[f].accept(interval, entities[f], entities);
         }
+        System.out.println("error code " + GL30.glGetError());
+        for (int f = 0; f < funcl.length; f++){//RealTime
+            if(funcl[f] == null) continue;
+            System.out.println(((Physics) entities[f].physics).v + " << " + entities[f].physics.name);
+        }
+
 
 /**
  if(entities[0].getPosition().y < height){

@@ -1,24 +1,28 @@
-package com.COMPFIZ.underscore;
+package com.COMPFIZ.underscore.games;
 
 import com.COMPFIZ.core.*;
+import com.COMPFIZ.core.actors.Thrower;
+import com.COMPFIZ.core.attributes.Physics;
 import com.COMPFIZ.core.mixins.Constants;
 import com.COMPFIZ.core.mixins.maths.Maths;
 import com.COMPFIZ.core.models.Entity;
-import com.COMPFIZ.core.attributes.Physics;
 import com.COMPFIZ.core.models.StillModel;
-import com.COMPFIZ.core.actors.Thrower;
 import com.COMPFIZ.core.shaders.Shaders;
 import com.COMPFIZ.core.shaders.myShader;
+import com.COMPFIZ.underscore.Launcher;
 import org.joml.Math;
 import org.joml.Vector3f;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL30;
 
 import java.io.IOException;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.function.BiConsumer;
 
-public class Physics2D implements Disc {
+public class Lunar_Golf implements Disc {
 
 
     private final WindowManager winMan;
@@ -39,11 +43,11 @@ public class Physics2D implements Disc {
     private String FILENAME = "src/data.txt";
     private Vector3f groundposition = new Vector3f(0f,-.5f/Constants.physicfield,0f);
     float r = .9f, g = .7f, b = 1, a;//a doesnt have to be initialized for some reason
-    float pos3fLength = 30.48f;
+    float hypotenuse = 0f;
     float theta;
 
 
-    public Physics2D() throws Exception{
+    public Lunar_Golf() throws Exception{
         winMan = Launcher.getWinMan();
         loader = Launcher.getLoader();
         renderer = new GPURenderer();
@@ -55,6 +59,7 @@ public class Physics2D implements Disc {
         renderer.init(shaders);
         projectile = new Thrower();
         projectile.setWind(new Vector3f(0, 0, 0));
+        projectile.setrho(0);
         PATH = Paths.get(FILENAME);
 
         //FileWriter
@@ -75,7 +80,9 @@ public class Physics2D implements Disc {
         blockModel = loader.loadOBJ("/OBJs/circle.obj");//Keep forgetting you have to add a slash prefixing path
 
         //ball
-        theta = 10f;
+        theta = 8f;
+        Constants.field = Constants.physicfield;
+        Constants.FOG = Constants.MOG;
 
         Entity myBlock = new Entity(blockModel);
         Entity myGround = new Entity(groundModel);
@@ -84,11 +91,12 @@ public class Physics2D implements Disc {
 
         //skyblue = .2f,.8f,.89f
         myBlock.scale.set(1/80f);
-        myBlock.position = Maths.triangulate((double)pos3fLength, theta);
-        myBlock.color.set(.5f, .6f, .2f);
+        myBlock.position = Maths.triangulate((double) hypotenuse, theta);
+        myBlock.color.set(.5f, .5f, .5f);
 
-        myBlock.physics = new Physics(4.2f, .125f, .3f);
-        ((Physics) myBlock.physics).v = Maths.triangulate(330d, theta);
+        myBlock.physics = new Physics(0.045f, .021335f, 0f);
+        ((Physics) myBlock.physics).v = Maths.triangulate(70d, theta);
+        myBlock.physics.name = "Golf Ball";
 
         entities = new Entity[9];
         funcl = new BiConsumer[9];
@@ -116,8 +124,10 @@ public class Physics2D implements Disc {
             StillModel blockModel = loader.loadOBJ("/OBJs/circle.obj");
             entities[updIndex] = new Entity(blockModel);
             entities[updIndex].scale.set(1/80f);
-            entities[updIndex].position.set(Maths.triangulate(pos3fLength, theta));
+            entities[updIndex].position.set(Maths.triangulate(hypotenuse, theta));
             entities[updIndex].physics = new Physics(10f, .125f);
+            entities[updIndex].color.set(.5f, .5f, .5f);
+            entities[updIndex].physics.name = "Extra";
 
             funcl[updIndex] = projectile::update;
             EventHandler.eventStream[0] = true;
@@ -127,17 +137,22 @@ public class Physics2D implements Disc {
 
     @Override
     public void update(float interval) {//Add Event-Registry
-        //interval similar to dt
-        //System.out.println(GL30.glGetError());
+        System.out.println("FRAME: " + EventHandler.allFrames);
+        System.out.println("********************************");
 
         for (int f = 0; f < funcl.length; f++){//RealTime
             if(funcl[f] == null) continue;
             funcl[f].accept(interval, entities[f]);
         }
+        System.out.println("error code " + GL30.glGetError());
+        for (int f = 0; f < funcl.length; f++){//RealTime
+            if(funcl[f] == null) continue;
+            System.out.println(((Physics) entities[f].physics).v + " << " + entities[f].physics.name);
+        }
 
         if(entities[0].getPosition().y < 0){
             EventHandler.isRunning = false;
-            System.out.println(entities[0].getPosition().x - Maths.triangulate(pos3fLength, theta).x);
+            System.out.println(entities[0].getPosition().x - Maths.triangulate(hypotenuse, theta).x);
             System.out.println(EventHandler.totalTime);
         }
 

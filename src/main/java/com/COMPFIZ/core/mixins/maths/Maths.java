@@ -8,19 +8,9 @@ import org.joml.Vector3f;
 
 public class Maths {
 
-    public static Transformation createTM(Vector3f translation, Vector3f rotation, Vector3f scale) {
-            Matrix4f matrix = new Matrix4f();
-            matrix.identity().translate(translation.mul(Constants.orbitfield, new Vector3f()))
-                    .rotateX((float) Math.toRadians(rotation.x))
-                    .rotateY((float) Math.toRadians(rotation.y))
-                    .rotateZ((float) Math.toRadians(rotation.z))
-                    .scale(scale.mul(new Vector3f(1f, 1, 1), new Vector3f()));//Because 16:9 resolution
-            return new Transformation(matrix);
-        }
-
     public static Transformation createTM(Vector3d translation, Vector3d rotation, Vector3d scale) {
         Matrix4d matrix = new Matrix4d();
-        matrix.identity().translate(translation.mul(Constants.orbitfield, new Vector3d()))
+        matrix.identity().translate(translation.mul(Constants.field, new Vector3d()))
                 .rotateX((float) Math.toRadians(rotation.x))
                 .rotateY((float) Math.toRadians(rotation.y))
                 .rotateZ((float) Math.toRadians(rotation.z))
