@@ -88,7 +88,6 @@ public class Loader {
         int vaoID = GL30.glGenVertexArrays();//creates vaoID with openGL, binds it, and returns the ID
         vaos.add(vaoID);
         GL30.glBindVertexArray(vaoID);
-        System.out.println(GL30.glGetError());
         return vaoID; //returns ID
     }
 
@@ -96,14 +95,11 @@ public class Loader {
         int vboID = GL30.glGenBuffers();//usage is the AttribNum | UsageNum
         vbos.add(vboID);
         GL30.glBindBuffer(GL30.GL_ARRAY_BUFFER, vboID);
-        System.out.println(GL30.glGetError());//binds
+
         FloatBuffer buf = ConvertToFloatBuffer(data);//Now I have a buffer flipped to the read cycle
         GL30.glBufferData(GL30.GL_ARRAY_BUFFER, buf, GL30.GL_STATIC_DRAW);
-        System.out.println(GL30.glGetError());//Writes the data to binded vboID
         GL30.glVertexAttribPointer(usage, 3, GL30.GL_FLOAT, false, 0, 0);
-        System.out.println(GL30.glGetError());//puts data in VBO slot//xyz==3
         GL30.glBindBuffer(GL30.GL_ARRAY_BUFFER, 0);
-        System.out.println(GL30.glGetError());//unbinds
     }//Last param slot tells what you are going to do with the data | STATIC_DRAW
 
    // public int loadTexture(String filename){

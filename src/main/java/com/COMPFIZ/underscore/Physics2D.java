@@ -7,6 +7,7 @@ import com.COMPFIZ.core.models.Entity;
 import com.COMPFIZ.core.attributes.Physics;
 import com.COMPFIZ.core.models.StillModel;
 import com.COMPFIZ.core.actors.Thrower;
+import com.COMPFIZ.core.shaders.Shaders;
 import com.COMPFIZ.core.shaders.myShader;
 import org.joml.Math;
 import org.joml.Vector3f;
@@ -31,11 +32,12 @@ public class Physics2D implements Disc {
 
     private Thrower projectile;
     private int updIndex = 0;//Basically relative size of Entities arr
+    private Shaders[] shaders = new Shaders[1];
     //private Map<Entity, Function> linker; heavyweight option
     private BiConsumer<Float, Entity>[] funcl;
     private Path PATH;
     private String FILENAME = "src/data.txt";
-    private Vector3f groundposition = new Vector3f(0f,-.5f/Constants.field,0f);
+    private Vector3f groundposition = new Vector3f(0f,-.5f/Constants.physicfield,0f);
     float r = .9f, g = .7f, b = 1, a;//a doesnt have to be initialized for some reason
     float pos3fLength = 30.48f;
     float theta;
@@ -49,7 +51,8 @@ public class Physics2D implements Disc {
 
     @Override
     public void init() throws Exception{
-        //renderer.init();
+        shaders[0] = new myShader();
+        renderer.init(shaders);
         projectile = new Thrower();
         projectile.setW(new Vector3f(0, 0, 0));
         PATH = Paths.get(FILENAME);
@@ -68,6 +71,7 @@ public class Physics2D implements Disc {
         float [] groundPoints = Constants.rectangle;//This shouldnt be a square
         int[] groundindices = new int[]{0,1,2,3,4,5};
         groundModel = loader.loadinVAO(groundPoints, groundindices);
+        StillModel skyModel = loader.loadinVAO(groundPoints, groundindices);
         blockModel = loader.loadOBJ("/OBJs/circle.obj");//Keep forgetting you have to add a slash prefixing path
 
         //ball
@@ -75,25 +79,34 @@ public class Physics2D implements Disc {
 
         Entity myBlock = new Entity(blockModel);
         Entity myGround = new Entity(groundModel);
+        Entity myBackGround = new Entity(skyModel);
 
 
         //skyblue = .2f,.8f,.89f
         myBlock.scale.set(1/80f);
-        myBlock.position = Maths.triangulate(pos3fLength, theta);
+        myBlock.position = Maths.triangulate((double)pos3fLength, theta);
+        myBlock.color.set(.5f, .6f, .2f);
 
         myBlock.physics = new Physics(4.2f, .125f, .3f);
-        ((Physics) myBlock.physics).v = Maths.triangulate(330f, theta);
+        ((Physics) myBlock.physics).v = Maths.triangulate(330d, theta);
 
         entities = new Entity[9];
         funcl = new BiConsumer[9];
         entities[0] = myBlock;
         funcl[0] = projectile::update;
         entities[1] = myGround;
-        updIndex = 2;
+        entities[2] = myBackGround;
+        updIndex = 3;
+
 
         //StableGround
-        myGround.color.set(.2f, .8f, .89f);
+        myGround.color.set(.2f, .8f, .1f);
         myGround.position.set(groundposition);
+        myGround.scale.set(2, 1, 1);
+
+        myBackGround.color.set(.2f, .9f, .89f);
+        myBackGround.position.set(0, 0, 0);
+        myBackGround.scale.set(5);
     }
 
     @Override
@@ -135,7 +148,7 @@ if(entities[0].getPosition().y < height){
     System.out.println(entities[0].getPosition().y);
 }*/
 
-height = entities[0].getPosition().y;
+height = (float) entities[0].getPosition().y;
 
         try {
             Files.writeString(PATH, (entities[0].getPosition().y) + "\n", StandardOpenOption.APPEND);//Make it so it writes to a file and a different program can filter through answers
@@ -157,7 +170,7 @@ height = entities[0].getPosition().y;
         }
         renderer.setClearColor(r,g,b, a);
         renderer.prepare();
-        renderer.render(entities, new myShader());//Unoptimized I think//--
+        renderer.render(entities, shaders[0]);//Unoptimized I think//--
 
     }
 

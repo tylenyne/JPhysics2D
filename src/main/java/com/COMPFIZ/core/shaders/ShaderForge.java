@@ -103,12 +103,12 @@ public class ShaderForge {
 
         public static String loadResource(String filename) throws Exception {
             String result;
-            try(InputStream in = GPURenderer.class.getResourceAsStream(filename);
+            try(InputStream in = ShaderForge.class.getResourceAsStream(filename);
                 Scanner scanner = new Scanner(in, StandardCharsets.UTF_8.name())) {
                 result = scanner.useDelimiter("\\A").next();
             }
             return result;
-    }
+        }
 
 
         public static void connect(){

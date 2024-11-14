@@ -1,11 +1,12 @@
 package com.COMPFIZ.core.models;
 
 import com.COMPFIZ.core.attributes.Descriptors;
+import org.joml.Vector3d;
 import org.joml.Vector3f;
 
 public class Entity extends StillModel {
     //Fields-
-    public Vector3f position = new Vector3f(), rotation = new Vector3f(), scale = new Vector3f(1f);
+    public Vector3d position = new Vector3d(), rotation = new Vector3d(), scale = new Vector3d(1f);
     public Vector3f color = new Vector3f();
     public Descriptors physics;
     public Descriptors light;
@@ -15,7 +16,7 @@ public class Entity extends StillModel {
         super(vaoID, vcount);
         this.position.set(position);
         this.rotation.set(rotation);
-        this.scale = new Vector3f(scale);
+        this.scale = new Vector3d(scale);
     }
 
     public Entity(StillModel model, Vector3f position){
@@ -43,7 +44,7 @@ public class Entity extends StillModel {
         position.y = height;
     }
 
-    public Entity(StillModel rawModel, Vector3f position, Vector3f rotation, Vector3f color, float scale) {
+    public Entity(StillModel rawModel, Vector3d position, Vector3d rotation, Vector3d color, float scale) {
         super(rawModel);
         this.position = position;
         this.rotation = rotation;
@@ -53,25 +54,25 @@ public class Entity extends StillModel {
 
     public Entity(StillModel model) {
         super(model);
-        position = new Vector3f(0,0,0);
-        rotation = new Vector3f(0,0,0);
-        scale = new Vector3f(1,1,1);
+        position = new Vector3d(0,0,0);
+        rotation = new Vector3d(0,0,0);
+        scale = new Vector3d(1,1,1);
     }
 
     //Maybe rename getTranslation
-    public Vector3f getPosition() {
+    public Vector3d getPosition() {
         return position;
     }
 
-    public Vector3f getRotation() {
+    public Vector3d getRotation() {
         return rotation;
     }
 
-    public Vector3f getScale() {
+    public Vector3d getScale() {
         return scale;
     }
 
-    public float getTotalScale() {//Avg Scale
+    public double getTotalScale() {//Avg Scale
         return scale.x+scale.y+scale.z;
     }
 
@@ -91,7 +92,7 @@ public class Entity extends StillModel {
         position.set(x, y, z);
     }
 
-    public void setPos(Vector3f pos) {
+    public void setPos(Vector3d pos) {
         position = pos;
     }
 

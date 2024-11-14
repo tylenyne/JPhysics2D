@@ -3,16 +3,17 @@ package com.COMPFIZ.core.shaders;
 import com.COMPFIZ.core.mixins.maths.Maths;
 import com.COMPFIZ.core.mixins.maths.Transformation;
 import com.COMPFIZ.core.models.Entity;
+import org.joml.Matrix4f;
 import org.joml.Vector3f;
 import org.lwjgl.opengl.GL30;
 
 public class myShader extends Shaders{
     private int TMLocation;
     private int lightLocation;
+    private int lightColorLocation;
 
     @Override
-    public void apply(Entity entity) {
-        System.out.println(GL30.glGetError());
+    public void apply(Entity entity){
         Transformation matrix = Maths.createTM(entity.position, entity.rotation, entity.scale);
         ShaderForge.setUniformMatrix(TMLocation, matrix.mat);
     }

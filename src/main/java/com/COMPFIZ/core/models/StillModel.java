@@ -7,8 +7,7 @@ public class StillModel {
     public StillModel(int vaoID, int vcount) {
         this.vaoID = vaoID;
         this.vcount = vcount;
-        System.out.println(vaoID + "\t" + vcount);
-
+        System.out.println("Succesfully Created New Model | VAOID: " + vaoID + "\t VERTICES: " + vcount);
     }
 
     public StillModel(StillModel rawModel) {

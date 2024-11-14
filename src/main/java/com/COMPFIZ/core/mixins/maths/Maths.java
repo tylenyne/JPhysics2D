@@ -1,20 +1,32 @@
 package com.COMPFIZ.core.mixins.maths;
 
 import com.COMPFIZ.core.mixins.Constants;
+import org.joml.Matrix4d;
 import org.joml.Matrix4f;
+import org.joml.Vector3d;
 import org.joml.Vector3f;
 
 public class Maths {
 
     public static Transformation createTM(Vector3f translation, Vector3f rotation, Vector3f scale) {
             Matrix4f matrix = new Matrix4f();
-            matrix.identity().translate(translation.mul(Constants.field, new Vector3f()))
+            matrix.identity().translate(translation.mul(Constants.orbitfield, new Vector3f()))
                     .rotateX((float) Math.toRadians(rotation.x))
                     .rotateY((float) Math.toRadians(rotation.y))
                     .rotateZ((float) Math.toRadians(rotation.z))
                     .scale(scale.mul(new Vector3f(1f, 1, 1), new Vector3f()));//Because 16:9 resolution
             return new Transformation(matrix);
         }
+
+    public static Transformation createTM(Vector3d translation, Vector3d rotation, Vector3d scale) {
+        Matrix4d matrix = new Matrix4d();
+        matrix.identity().translate(translation.mul(Constants.orbitfield, new Vector3d()))
+                .rotateX((float) Math.toRadians(rotation.x))
+                .rotateY((float) Math.toRadians(rotation.y))
+                .rotateZ((float) Math.toRadians(rotation.z))
+                .scale(scale.mul(new Vector3d(1f, 1, 1), new Vector3d()));//Because 16:9 resolution
+        return new Transformation(matrix);
+    }
 
         public static float calcSpeed(float mass, float force){
             float speed;
@@ -37,6 +49,17 @@ public class Maths {
             //Can be optimized
              return sum;
         }
+
+    public static Vector3d calcNetForces(Vector3d[] forces){
+        Vector3d sum = new Vector3d(0, 0, 0);
+
+        for(Vector3d force : forces){
+            if(force == null) continue;
+            sum.add(force);
+        }
+        //Can be optimized
+        return sum;
+    }
 
         public static float calcAirDrag(float v, float p, float c, float A){
             return (float) -(.5*A*p*c*v*v);//Negative sign so I can add it | Opposite
@@ -64,8 +87,8 @@ public class Maths {
         return Constants.FOG.mul(mass, dest);
     }
 
-    public static float calcOrbitForce(float massOne, float massTwo, float distance){
-        float force = (6.67f * (float)Math.pow(10, -11) * massOne * massTwo)/distance;
+    public static double calcOrbitForce(double massOne, double massTwo, double distance){
+        double force = ((6.67f * Math.pow(10, -11) * massOne) * massTwo)/distance;
         return force;
     }
 
@@ -84,6 +107,12 @@ public class Maths {
             float y = (float) Math.sin(Math.toRadians(theta)) * hypotenuse;
             return new Vector3f(x, y, 0);
         }
+
+    public static Vector3d triangulate(double hypotenuse, double theta){
+        double x =  Math.cos(Math.toRadians(theta)) * hypotenuse;
+        double y =  Math.sin(Math.toRadians(theta)) * hypotenuse;
+        return new Vector3d(x, y, 0);
+    }
 
 
     }

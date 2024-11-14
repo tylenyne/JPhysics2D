@@ -22,7 +22,5 @@ public class Utils {
     }
 
     //Maths
-    public static void renderModel(int id){
-
     }
-}
+

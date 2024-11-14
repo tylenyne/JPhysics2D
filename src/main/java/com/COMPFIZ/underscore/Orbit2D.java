@@ -27,6 +27,7 @@ public class Orbit2D implements Disc {
     private int updIndex = 0;
     private Gravitor gravity;
 
+
     private TriConsumer<Float, Entity, Entity[]>[] funcl;
     private Path PATH;
     private String FILENAME = "src/data.txt";
@@ -69,14 +70,13 @@ public class Orbit2D implements Disc {
         Entity Earth = new Entity(blockModel);
         Entity Sun = new Entity(blockModel2);
         Entity Moon = new Entity(blockModel3);
-        Entity Mars = new Entity(blockModel3);
 
 
         Earth.color.set(.2f,.8f,.89f);
         Earth.scale.set(1/80f);
-        Earth.physics = new Physics(5.97e6f, 200, "Earth");
-        Earth.position.set(-4.2052e6, 0, 0);
-        ((Physics)Earth.physics).v.set(Maths.triangulate(670000, 45));
+        Earth.physics = new Physics(5.972e3d, 200, "Earth");
+        Earth.position.set(-4.015e5, 0, 0);
+        ((Physics)Earth.physics).v.set(-2.721826952615546E+01, 1.299836387907317E+01f, -7.733795645012975E-04).mul(10);
 
 
         entities = new Entity[9];
@@ -94,17 +94,15 @@ public class Orbit2D implements Disc {
         Sun.color.set(.85f, .7f, .2f);
         Sun.scale.set(1/5f);
         Sun.position.set(0, 0,0 );
-        Sun.physics = new Physics(1.989e15f, 400, "Sun");
+        Sun.physics = new Physics(1e16f, 400, "Sun");
 
         Moon.color.set(.69f, .7f, .7f);
         Moon.scale.set(1/80f);
-        Moon.position.set(-4.1052e6, 100000, 0);
+        Moon.position.set(-4.1052e5, 100000, 0);
         Moon.physics = new Physics(10000f, 400, "Moon");
-        ((Physics)Moon.physics).v.set(Maths.triangulate(670000, 45));
+        ((Physics)Moon.physics).v.set(Maths.triangulate(47000f, 45));
 
-        Mars.color.set(1, .2, .4);
-        Mars.scale.set(1/80f);
-        Mars.position.set(14e6, 0,0);
+
     }
 
     @Override
@@ -128,14 +126,12 @@ public class Orbit2D implements Disc {
 
     @Override
     public void update(float interval) {//Add Event-Registry
-        //interval similar to dt
-        //System.out.println(GL30.glGetError());
-
+        System.out.println("FRAME: " + EventHandler.allFrames);
+        System.out.println("********************************");
         for (int f = 0; f < funcl.length; f++){//RealTime
             if(funcl[f] == null) continue;
             funcl[f].accept(interval, entities[f], entities);
         }
-        //System.out.println(entities[0].vel);
 
 /**
  if(entities[0].getPosition().y < height){

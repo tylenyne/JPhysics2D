@@ -57,6 +57,8 @@ dependencies {
     implementation "org.lwjgl:lwjgl-xxhash"
     implementation "org.lwjgl:lwjgl-yoga"
     implementation "org.lwjgl:lwjgl-zstd"
+
+
     runtimeOnly "org.lwjgl:lwjgl::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-assimp::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-bgfx::$lwjglNatives"

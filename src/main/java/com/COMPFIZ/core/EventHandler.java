@@ -10,8 +10,9 @@ public class EventHandler {
     public static final float FRAMERATE = 120; //Absolute time because only calling game attribs like update(); each defined frame which correspond to time
     public static double totalTime = 0, absoluteTotalTime = 0;//Outside the games FrameCalls totaltime | Total time entire program has been running
     private static int fps;
+    private static float interval = 40;
     private static float frametime = 1.0f/FRAMERATE;
-    private static float allFrames;
+    public static float allFrames;
     //Static
 
     public static boolean isRunning;
@@ -41,7 +42,6 @@ public class EventHandler {
 
     public void start() throws Exception{
         this.init();
-        System.out.println("Log: Game Environment Made");
         if(isRunning){
             return;
         }

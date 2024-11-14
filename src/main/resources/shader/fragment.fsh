@@ -8,8 +8,8 @@ out vec4 fragColor;
 
 
 void main(){
-    vec3 lightc = vec3(2, 7, 8.5);
-    float len = min(length(pos2Light), 1);
+    vec3 lightc = vec3(.85, .7, .2);
+    float len = length(pos2Light);
     vec4 threshold = vec4(color, 1) * 7;
-    fragColor = vec4(color / ((lightc * len * 6) + lightc/10), 0);
+    fragColor = vec4(color, 1);//max(vec4(10 * color * (len * 1), 1), vec4(color/2, 1));
 }

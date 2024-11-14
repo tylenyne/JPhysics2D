@@ -3,6 +3,7 @@ package com.COMPFIZ.core.actors;
 import com.COMPFIZ.core.mixins.maths.Maths;
 import com.COMPFIZ.core.models.Entity;
 import com.COMPFIZ.core.attributes.Physics;
+import org.joml.Vector3d;
 import org.joml.Vector3f;
 
 public class Thrower {
@@ -19,7 +20,8 @@ private Vector3f W = new Vector3f();
     public void update(float interval, Entity entity){
         boolean onEarth = false;
         float temp = 0, p = 0, relativeRho = .97f;//0.97
-        Vector3f force = new Vector3f(), acc = new Vector3f(), airspeed = new Vector3f();
+        Vector3d force = new Vector3d(), acc = new Vector3d();
+        Vector3f airspeed = new Vector3f();
         Physics pac = (Physics)entity.physics;
         /**
         if(onEarth) {
@@ -38,14 +40,14 @@ private Vector3f W = new Vector3f();
         }*/
         airspeed.set(pac.v);
         airspeed.sub(W);//Tailwind would be positive headwind would be negative
-        force.set(Maths.calcNetForces(new Vector3f[]{Maths.calcAirDrag(airspeed, relativeRho, pac.dc, (float) (Math.pow(pac.r, 2)*Math.PI)), Maths.calcDropForce(pac.mass, new Vector3f()), Maths.calcMagnus(new Vector3f(0, 0, 0), airspeed)}));
+        force.set(Maths.calcNetForces(new Vector3f[]{Maths.calcAirDrag(airspeed, relativeRho, pac.dc, (float) (Math.pow(pac.r, 2)*Math.PI)), Maths.calcDropForce((float) pac.mass, new Vector3f()), Maths.calcMagnus(new Vector3f(0, 0, 0), airspeed)}));
         //You will just have to change if its a car or not for now | thrustForce is for car
         //Could change it to where only x is affected by airdrag//Velocity - AG or wind = airspeed
         force.div(pac.mass, acc);
         //System.out.println(airspeed);//TroubleShoot
         pac.v.add(acc.mul(interval));
         //System.out.println(Maths.calcAirDrag(airspeed, relativeRho, pac.dc, (float) (Math.pow(pac.r, 2)*Math.PI)));
-        entity.position.add(pac.v.mul(interval, new Vector3f()));//Translation/pos
+        entity.position.add(pac.v.mul(interval, new Vector3d()));//Translation/pos
         //vel acc and pos should all be positive maybe not pos
     }
 
