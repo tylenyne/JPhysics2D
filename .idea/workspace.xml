@@ -9,18 +9,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c2e4546-2eed-4630-b820-b5f6d17fbd10" name="Changes" comment="Parser needs major tweaks">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/games/Lunar_Golf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/games/Pumpkin_Chunkin.java" afterDir="false" />
+    <list default="true" id="8c2e4546-2eed-4630-b820-b5f6d17fbd10" name="Changes" comment="Lunar Golf and Pumpkin&#10;chunkin">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/Camera.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JPL/_jupiter.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JPL/_mars.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JPL/_mercury.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JPL/_neptune.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JPL/_saturn.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JPL/_venus.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JPL/_youranus.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/EventHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/GPURenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/GPURenderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/actors/Gravitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/actors/Gravitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/actors/Thrower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/actors/Thrower.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/maths/Maths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/maths/Maths.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/maths/Transformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/maths/Transformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/maths/ViewMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/maths/ViewMatrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/BasicColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/BasicColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/ShaderForge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/ShaderForge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/Shaders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/Shaders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/myShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/shaders/myShader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/Launcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/Orbit2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/Orbit2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/Orbit2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/games/Orrey.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/Physics2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/Physics2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/games/Lunar_Golf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/games/Lunar_Golf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/games/Pumpkin_Chunkin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/games/Pumpkin_Chunkin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/shader/fragment.fsh" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shader/fragment.fsh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/shader/vertex.vsh" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shader/vertex.vsh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/web/_earth.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/JPL/_earth.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/web/_sun.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/JPL/_sun.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/web/_venus.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,10 +154,11 @@
       <recent name="C:\Users\proto\IdeaProjects\challenge1\COMPFIZ\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\proto\IdeaProjects\challenge1\COMPFIZ\src\main\resources\JPL" />
       <recent name="C:\Users\proto\IdeaProjects\challenge1\COMPFIZ\src\main\resources\web" />
+      <recent name="C:\Users\proto\IdeaProjects\challenge1\COMPFIZ\src\main\resources" />
       <recent name="C:\Users\proto\IdeaProjects\challenge1\COMPFIZ\src\main\resources\mod" />
       <recent name="C:\Users\proto\IdeaProjects\challenge1\COMPFIZ\src\main\resources\models" />
-      <recent name="C:\Users\proto\IdeaProjects\challenge1\COMPFIZ\src\main\resources\shader" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.COMPFIZ.underscore.games" />
@@ -151,7 +172,7 @@
       <module name="COMPFIZ.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.COMPFIZ.underscore.*" />
+          <option name="PATTERN" value="com.COMPFIZ.underscore.games.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -258,7 +279,11 @@
       <workItem from="1731259587875" duration="171000" />
       <workItem from="1731341495066" duration="3938000" />
       <workItem from="1731442950184" duration="371000" />
-      <workItem from="1731503317747" duration="20559000" />
+      <workItem from="1731503317747" duration="22445000" />
+      <workItem from="1731590089507" duration="712000" />
+      <workItem from="1731611041913" duration="3140000" />
+      <workItem from="1731684887589" duration="5863000" />
+      <workItem from="1731779256344" duration="21873000" />
     </task>
     <task id="LOCAL-00001" summary="vao">
       <option name="closed" value="true" />
@@ -300,7 +325,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731545427598</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Lunar Golf and Pumpkin&#10;chunkin">
+      <option name="closed" value="true" />
+      <created>1731552336430</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1731552336430</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,7 +356,8 @@
     <MESSAGE value="Added orbit" />
     <MESSAGE value="lightweight shaders added" />
     <MESSAGE value="Parser needs major tweaks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Parser needs major tweaks" />
+    <MESSAGE value="Lunar Golf and Pumpkin&#10;chunkin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lunar Golf and Pumpkin&#10;chunkin" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

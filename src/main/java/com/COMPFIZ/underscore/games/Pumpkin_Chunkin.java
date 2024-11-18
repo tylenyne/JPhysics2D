@@ -29,6 +29,8 @@ public class Pumpkin_Chunkin implements Disc {
 
     private final Loader loader;
 
+    private Camera cam;
+
     private final GPURenderer renderer;
 
     private Entity[] entities;
@@ -181,7 +183,7 @@ height = (float) entities[0].getPosition().y;
         }
         renderer.setClearColor(r,g,b, a);
         renderer.prepare();
-        renderer.render(entities, shaders[0]);//Unoptimized I think//--
+        renderer.render(entities, cam, shaders[0]);//Unoptimized I think//--
 
     }
 

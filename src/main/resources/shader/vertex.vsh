@@ -13,11 +13,12 @@ uniform vec3 light;//POSITION
 
 uniform mat4 projectionMatrix;//Move to different file if needed
 
+uniform mat4 viewMatrix;
+
 void main(void){//projectionMatrix *
-    vec4 worldpos = (transformationMatrix * vec4(position, 1.0));
+    vec4 worldpos = viewMatrix * transformationMatrix * vec4(position, 1.0);
     pos2Light = vec3(worldpos) - light;//Because it thinks that the pixel close arent scaled when they actually are
     worldpos.x *= (9/16.0);
     gl_Position = worldpos;
     color = uColor;
-
 }

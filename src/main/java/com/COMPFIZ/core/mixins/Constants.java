@@ -22,7 +22,7 @@ public class Constants {
     public static final float SOG = 9.8f;
     public static final Vector3f EOG = (STDDIR.mul(SOG, new Vector3f()));
     public static Vector3f FOG = EOG;
-    public static final float orbitfield = 1/4.545e5f;
+    public static final double orbitfield = 1/4.545e11d;
     public static final float physicfield = 1/400f;
     public static final Vector3f MOG = (STDDIR.mul(moongravity, new Vector3f()));
     public static final float STDWEIGHT = 1;

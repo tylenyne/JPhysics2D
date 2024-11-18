@@ -34,15 +34,14 @@ public class GPURenderer {
         //Line above Renders color to Screen so maybe prepare means prepare screen IDK
     }
 
-    public void render(StillModel[] model, Shaders shader) {//New Param Shader
+    public void render(StillModel[] model, Camera cam, Shaders shader) {//New Param Shader
         //this.prepare();
         ShaderForge.connect();
         shader.set((Entity) model[0]);
-        for(int i = 0; model[i] != null; i++) {//Make it so if there are duplicate models you only bind to one and process shaders during
-            System.out.println("Rendering " + ((Entity) model[i]).physics.name);
+        for(int i = 0; i < model.length && model[i] != null; i++) {//Make it so if there are duplicate models you only bind to one and process shaders during
             GL30.glBindVertexArray(model[i].getVaoID());
             GL30.glEnableVertexAttribArray(0);
-            shader.apply((Entity) model[i]);//for now
+            shader.apply((Entity) model[i], cam);//for now
             setEntityColor((Entity) model[i]);
             GL30.glDrawElements(GL30.GL_TRIANGLES, model[i].getVcount(), GL11.GL_UNSIGNED_INT, 0);
             GL30.glDisableVertexAttribArray(0);

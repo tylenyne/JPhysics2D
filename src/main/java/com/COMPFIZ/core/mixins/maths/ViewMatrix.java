@@ -1,14 +1,13 @@
 package com.COMPFIZ.core.mixins.maths;
 
 import com.COMPFIZ.core.models.Entity;
+import org.joml.Matrix4d;
 import org.joml.Vector3f;
 
 public class ViewMatrix {
-    float pitch, yaw, roll;
+    public Matrix4d mat = new Matrix4d();
 
-    public void follow(Entity entity){
-        //pitch = -entity.position.x;
-        //yaw = -entity.position.y;
-        //roll = -entity.position.z;
+    public ViewMatrix(Matrix4d vm) {
+        mat.set(vm);
     }
 }

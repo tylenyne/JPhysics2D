@@ -7,6 +7,7 @@ import com.COMPFIZ.core.WindowManager;
 import com.COMPFIZ.core.mixins.Constants;
 import com.COMPFIZ.core.shaders.ShaderForge;
 import com.COMPFIZ.underscore.games.Lunar_Golf;
+import com.COMPFIZ.underscore.games.Orrey;
 import com.COMPFIZ.underscore.games.Pumpkin_Chunkin;
 import org.lwjgl.Version;
 
@@ -21,7 +22,7 @@ public class Launcher {//idea- make buffers that only allow inputs every other f
         System.out.println("Version " + Version.getVersion());
         winMan = new WindowManager(Constants.TITLE, 1600, 900, false);
         loader = new Loader();
-        thisGame = new Orbit2D();
+        thisGame = new Orrey();
         EventHandler EM = new EventHandler();
         try {
             EM.start();

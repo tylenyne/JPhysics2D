@@ -8,14 +8,22 @@ import org.joml.Vector3f;
 
 public class Maths {
 
-    public static Transformation createTM(Vector3d translation, Vector3d rotation, Vector3d scale) {
+    public static Transformation createTM(Vector3d translation, Vector3d rotation, Vector3d scale){
         Matrix4d matrix = new Matrix4d();
         matrix.identity().translate(translation.mul(Constants.field, new Vector3d()))
                 .rotateX((float) Math.toRadians(rotation.x))
                 .rotateY((float) Math.toRadians(rotation.y))
                 .rotateZ((float) Math.toRadians(rotation.z))
-                .scale(scale.mul(new Vector3d(1f, 1, 1), new Vector3d()));//Because 16:9 resolution
+                .scale(scale);//Because 16:9 resolution
         return new Transformation(matrix);
+    }
+
+    public static ViewMatrix createVM(Vector3d position, Vector3d zoom, double field){
+        Matrix4d matrix = new Matrix4d();
+        matrix.identity()
+                .translate(position.negate(new Vector3d()).mul(zoom.mul(field, new Vector3d()), new Vector3d()))
+                .scale(zoom);
+        return new ViewMatrix(matrix);
     }
 
         public static float calcSpeed(float mass, float force){
@@ -78,7 +86,7 @@ public class Maths {
     }
 
     public static double calcOrbitForce(double massOne, double massTwo, double distance){
-        double force = ((6.67f * Math.pow(10, -11) * massOne) * massTwo)/distance;
+        double force = (6.67e-11d * massOne * massTwo)/(distance * distance);
         return force;
     }
 

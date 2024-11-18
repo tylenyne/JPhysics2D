@@ -1,6 +1,7 @@
 package com.COMPFIZ.core.shaders;
 
 import com.COMPFIZ.core.GPURenderer;
+import org.joml.Matrix4d;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 import org.lwjgl.opengl.GL20;
@@ -95,7 +96,7 @@ public class ShaderForge {
             GL30.glUniform1i(location, value);
         }
 
-        public static void setUniformMatrix(int location, Matrix4f matrix) {
+        public static void setUniformMatrix(int location, Matrix4d matrix) {
             try(MemoryStack stack = MemoryStack.stackPush()){
                 GL20.glUniformMatrix4fv(location, false, matrix.get(stack.mallocFloat(16)));
             }

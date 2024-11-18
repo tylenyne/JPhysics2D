@@ -28,13 +28,14 @@ public class Lunar_Golf implements Disc {
     private final WindowManager winMan;
 
     private final Loader loader;
+    private Camera cam;
 
     private final GPURenderer renderer;
 
     private Entity[] entities;
     float height = 0;
 
-    private Thrower projectile;
+    private Thrower thrower;
     private int updIndex = 0;//Basically relative size of Entities arr
     private Shaders[] shaders = new Shaders[1];
     //private Map<Entity, Function> linker; heavyweight option
@@ -57,9 +58,8 @@ public class Lunar_Golf implements Disc {
     public void init() throws Exception{
         shaders[0] = new myShader();
         renderer.init(shaders);
-        projectile = new Thrower();
-        projectile.setWind(new Vector3f(0, 0, 0));
-        projectile.setrho(0);
+        thrower = new Thrower();
+        thrower.setrho(0);
         PATH = Paths.get(FILENAME);
 
         //FileWriter
@@ -96,23 +96,24 @@ public class Lunar_Golf implements Disc {
 
         myBlock.physics = new Physics(0.045f, .021335f, 0f);
         ((Physics) myBlock.physics).v = Maths.triangulate(70d, theta);
+        
         myBlock.physics.name = "Golf Ball";
 
         entities = new Entity[9];
         funcl = new BiConsumer[9];
         entities[0] = myBlock;
-        funcl[0] = projectile::update;
+        funcl[0] = thrower::update;
         entities[1] = myGround;
         entities[2] = myBackGround;
         updIndex = 3;
 
 
         //StableGround
-        myGround.color.set(.2f, .8f, .1f);
+        myGround.color.set(.8f, .8f, .7f);
         myGround.position.set(groundposition);
         myGround.scale.set(2, 1, 1);
 
-        myBackGround.color.set(.2f, .9f, .89f);
+        myBackGround.color.set(0f, 0f, 0f);
         myBackGround.position.set(0, 0, 0);
         myBackGround.scale.set(5);
     }
@@ -124,12 +125,12 @@ public class Lunar_Golf implements Disc {
             StillModel blockModel = loader.loadOBJ("/OBJs/circle.obj");
             entities[updIndex] = new Entity(blockModel);
             entities[updIndex].scale.set(1/80f);
-            entities[updIndex].position.set(Maths.triangulate(hypotenuse, theta));
+            entities[updIndex].position.set(400, 0, 0);
             entities[updIndex].physics = new Physics(10f, .125f);
             entities[updIndex].color.set(.5f, .5f, .5f);
             entities[updIndex].physics.name = "Extra";
 
-            funcl[updIndex] = projectile::update;
+            funcl[updIndex] = thrower::update;
             EventHandler.eventStream[0] = true;
             updIndex++;
         }
@@ -148,6 +149,10 @@ public class Lunar_Golf implements Disc {
         for (int f = 0; f < funcl.length; f++){//RealTime
             if(funcl[f] == null) continue;
             System.out.println(((Physics) entities[f].physics).v + " << " + entities[f].physics.name);
+        }
+        for (int f = 0; f < funcl.length; f++){//RealTime
+            if(funcl[f] == null) continue;
+            System.out.println(( entities[f].position + " ## " + entities[f].physics.name));
         }
 
         if(entities[0].getPosition().y < 0){
@@ -185,7 +190,7 @@ height = (float) entities[0].getPosition().y;
         }
         renderer.setClearColor(r,g,b, a);
         renderer.prepare();
-        renderer.render(entities, shaders[0]);//Unoptimized I think//--
+        renderer.render(entities, cam, shaders[0]);//Unoptimized I think//--
 
     }
 
