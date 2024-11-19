@@ -30,11 +30,12 @@ public class Orrey implements Disc{
     private int updIndex = 0;
     private Gravitor gravity;
     private Camera cam;
+    private Vector3d direction;
+    private double b4 = 0.0;
 
 
     private TriConsumer<Float, Entity, Entity[]>[] funcl;
-    private Path PATH;
-    private String FILENAME = "src/data.txt";
+    private Entity Mercury;
 
     private Shaders[] shaders;
 
@@ -54,11 +55,6 @@ public class Orrey implements Disc{
         renderer.init(shaders);
         //maximum/minimum
         gravity = new Gravitor();
-        PATH = Paths.get(FILENAME);
-        if(Files.exists(PATH)){
-            Files.delete(PATH);
-        }
-        Files.createFile(PATH);
 
 
         Constants.field = Constants.orbitfield;
@@ -81,7 +77,7 @@ public class Orrey implements Disc{
         Entity Sun = new Entity(blockModel2);
         Entity Venus = new Entity(blockModel3);
         Entity Mars = new Entity(blockModel4);
-        Entity Mercury = new Entity(blockModel5);
+        Mercury = new Entity(blockModel5);
         Entity Jupiter = new Entity(blockModel6);
         Entity Saturn = new Entity(blockModel7);
         Entity Neptune = new Entity(blockModel8);
@@ -155,33 +151,34 @@ public class Orrey implements Disc{
         Parser.parse("2024-Nov-26 00:00:00.0000 TDB", "/JPL/_mercury.txt");
 
         Jupiter.color.set(.5, .3, .3);
-        Jupiter.scale.set(1/80d);
+        Jupiter.scale.set(1/5d);
         Jupiter.physics = new Physics(189818722e19d, 20, "Jupiter");
         Parser.load(Jupiter);
         Parser.parse("2024-Nov-26 00:00:00.0000 TDB", "/JPL/_jupiter.txt");
 
         Neptune.color.set(.2, .3, .5);
-        Neptune.scale.set(1/80d);
+        Neptune.scale.set(1/5d);
         Neptune.physics = new Physics(102.409e24, 20, "Neptune");
         Parser.load(Neptune);
         Parser.parse("2024-Nov-26 00:00:00.0000 TDB", "/JPL/_neptune.txt");
 
         Saturn.color.set(.5, .5, .3);
-        Saturn.scale.set(1/80d);
+        Saturn.scale.set(1/10d);
         Saturn.physics = new Physics(5.6834e26d, 20, "Saturn");
         Parser.load(Saturn);
         Parser.parse("2024-Nov-26 00:00:00.0000 TDB", "/JPL/_saturn.txt");
 
         Uranus.color.set(.1, 0, .6);
-        Uranus.scale.set(1/80d);
+        Uranus.scale.set(1/10d);
         Uranus.physics = new Physics(86.813e24, 20, "Uranus");
         Parser.load(Uranus);
         Parser.parse("2024-Nov-26 00:00:00.0000 TDB", "/JPL/_youranus.txt");
+
+        direction = new Vector3d(((Physics)Neptune.physics).v.normalize(new Vector3d()));
     }
 
     @Override
-    public void input() {
-
+    public void input(){
         if(winMan.isKeyPressed(GLFW.GLFW_KEY_SPACE) && entities[8] == null && !EventHandler.eventStream[0]){
             StillModel blockmodel = loader.loadOBJ("/OBJs/circle.obj");
             entities[updIndex] = new Entity(blockmodel);
@@ -201,8 +198,18 @@ public class Orrey implements Disc{
     @Override
     public void update(float interval) {//Add Event-Registry
         cam.input(winMan, entities);
+        int hh = (int) (EventHandler.totalTime / 3.154e+7 * 8760);
+        int dd = hh/24;
+        int mm = dd/30;
+        int yy = mm/12;
+        int alldays;
 
-        System.out.println("FRAME: " + EventHandler.allFrames);
+        alldays = dd;
+        hh = hh % 24;
+        dd = dd % 30;
+        mm = mm % 12;
+
+        System.out.println("FRAME: " + EventHandler.allFrames + " | " + yy + "/" + mm + "/" + dd + "/" + hh + " | DAY:" + alldays);
         System.out.println("********************************");
         for (int f = 0; f < funcl.length; f++){//RealTime
             if(funcl[f] == null) continue;
@@ -215,22 +222,14 @@ public class Orrey implements Disc{
             System.out.println(((Physics) entities[f].physics).v + " << " + entities[f].physics.name);
             System.out.println((entities[f].position) + " ## " + entities[f].physics.name);
         }
-
-/**
- if(entities[0].getPosition().y < height){
- EngineManager.isRunning = false;
- System.out.println(EngineManager.totalTime);
- System.out.println(entities[0].getPosition().y);
- }*/
-
-        try {
-            Files.writeString(PATH, (entities[0].getPosition().y) + "\n", StandardOpenOption.APPEND);//Make it so it writes to a file and a different program can filter through answers
+        double there = direction.dot(((Physics)entities[8].physics).v.normalize(new Vector3d()));
+        if(there >= .9999 && EventHandler.allFrames > 1200){
+            if(b4 > there){
+                EventHandler.isRunning = false;
+            }
+            b4 = there;
         }
-        catch(IOException e){
-            System.out.println(e);
-        }
-
-        //Try to save super bad class
+        System.out.println(there);
     }
 
 

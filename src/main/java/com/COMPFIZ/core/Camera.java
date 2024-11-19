@@ -24,7 +24,7 @@ public class Camera {
             zoom = Math.min(zoom + .01, 5);
         }
         if(win.isKeyPressed(GLFW.GLFW_KEY_S)){
-            zoom = Math.max(zoom - .01, .01);
+            zoom = Math.max(zoom - .01, .1);
         }
         if(win.isKeyPressed(GLFW.GLFW_KEY_RIGHT)){
             position.x+=.001 * 1/field;
