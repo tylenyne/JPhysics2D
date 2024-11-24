@@ -121,7 +121,6 @@ public class Lunar_Golf implements Disc {
     @Override
     public void input() {
         if(winMan.isKeyPressed(GLFW.GLFW_KEY_SPACE) && entities[8] == null && !EventHandler.eventStream[0]){
-
             StillModel blockModel = loader.loadOBJ("/OBJs/circle.obj");
             entities[updIndex] = new Entity(blockModel);
             entities[updIndex].scale.set(1/80f);
@@ -129,7 +128,6 @@ public class Lunar_Golf implements Disc {
             entities[updIndex].physics = new Physics(10f, .125f);
             entities[updIndex].color.set(.5f, .5f, .5f);
             entities[updIndex].physics.name = "Extra";
-
             funcl[updIndex] = thrower::update;
             EventHandler.eventStream[0] = true;
             updIndex++;

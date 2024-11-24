@@ -21,7 +21,7 @@ public class Maths {
     public static ViewMatrix createVM(Vector3d position, Vector3d zoom, double field){
         Matrix4d matrix = new Matrix4d();
         matrix.identity()
-                .translate(position.negate(new Vector3d()).mul(zoom.mul(field, new Vector3d()), new Vector3d()))
+                .translate(position.negate(new Vector3d()).mul(zoom.mul(1/field, new Vector3d()), new Vector3d()))
                 .scale(zoom);
         return new ViewMatrix(matrix);
     }
@@ -64,16 +64,16 @@ public class Maths {
         }//If you want more modular/dynamic
 
         //Does work
-        public static Vector3f calcAirDrag(Vector3f v, float p, float c, float A){
+        public static Vector3d calcAirDrag(Vector3d v, float p, float c, float A){
            float constant = -(.5f*A*p*c);
-           Vector3f drag =  v.mul(v.length(), new Vector3f())
+           Vector3d drag = v.mul(v.length(), new Vector3d())
                    .mul(constant);
            return drag;
         }
 
-        public static Vector3f calcMagnus(Vector3f magnus, Vector3f airspeed){//vag or vog?
+        public static Vector3d calcMagnus(Vector3d magnus, Vector3d airspeed){//vag or vog?
             float dragco = 3.5f * 1f/100000;
-            return (magnus.cross(airspeed, new Vector3f())).mul(dragco);
+            return (magnus.cross(airspeed, new Vector3d())).mul(dragco);
         }
 
         @Deprecated//Dont use its useless and interferes with interfave
@@ -81,13 +81,12 @@ public class Maths {
             return (speedOfGrav * mass);
         }
 
-        public static Vector3f calcDropForce(float mass, Vector3f dest){
+        public static Vector3d calcDropForce(float mass, Vector3d dest){
         return Constants.FOG.mul(mass, dest);
     }
 
     public static double calcOrbitForce(double massOne, double massTwo, double distance){
-        double force = (6.67e-11d * massOne * massTwo)/(distance * distance);
-        return force;
+        return (6.67428e-11d * massOne * massTwo)/(distance * distance);
     }
 
     public static float distanceFormula2F(Vector3f a, Vector3f b){

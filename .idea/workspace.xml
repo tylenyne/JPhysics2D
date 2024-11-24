@@ -9,10 +9,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c2e4546-2eed-4630-b820-b5f6d17fbd10" name="Changes" comment="JPL and Camera">
+    <list default="true" id="8c2e4546-2eed-4630-b820-b5f6d17fbd10" name="Changes" comment="Orbit Period">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/TriFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/games/AroundOurSolarSystem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/games/Asteroids.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/games/Myster_Orbiter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/games/Newtons_Cannon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/games/Tatooine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JPL/_moon.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/EventHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/GPURenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/GPURenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/WindowManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/WindowManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/actors/Gravitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/actors/Gravitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/actors/Thrower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/actors/Thrower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/attributes/Physics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/attributes/Physics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/maths/Maths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/core/mixins/maths/Maths.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/games/Lunar_Golf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/games/Lunar_Golf.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/games/Orrey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/COMPFIZ/underscore/games/Orrey.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,6 +160,7 @@
     <configuration name="Launcher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.COMPFIZ.underscore.Launcher" />
       <module name="COMPFIZ.main" />
+      <option name="PROGRAM_PARAMETERS" value="-Xms2G -Xmx4G" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.COMPFIZ.underscore.games.*" />
@@ -175,6 +193,10 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.Launcher" />
+      <item itemvalue="Gradle.COMPFIZ [build]" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.COMPFIZ [build]" />
@@ -258,7 +280,14 @@
       <workItem from="1731684887589" duration="5863000" />
       <workItem from="1731779256344" duration="35305000" />
       <workItem from="1731981106240" duration="700000" />
-      <workItem from="1731982468829" duration="1794000" />
+      <workItem from="1731982468829" duration="1862000" />
+      <workItem from="1732023183522" duration="12942000" />
+      <workItem from="1732070725986" duration="4713000" />
+      <workItem from="1732130688519" duration="2651000" />
+      <workItem from="1732142335957" duration="8668000" />
+      <workItem from="1732210668244" duration="33100000" />
+      <workItem from="1732388181644" duration="17314000" />
+      <workItem from="1732408496165" duration="22486000" />
     </task>
     <task id="LOCAL-00001" summary="vao">
       <option name="closed" value="true" />
@@ -316,7 +345,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731895745165</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Orbit Period">
+      <option name="closed" value="true" />
+      <created>1731984600651</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1731984600651</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -341,7 +378,18 @@
     <MESSAGE value="Parser needs major tweaks" />
     <MESSAGE value="Lunar Golf and Pumpkin&#10;chunkin" />
     <MESSAGE value="JPL and Camera" />
-    <option name="LAST_COMMIT_MESSAGE" value="JPL and Camera" />
+    <MESSAGE value="Orbit Period" />
+    <option name="LAST_COMMIT_MESSAGE" value="Orbit Period" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NumberFormatException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

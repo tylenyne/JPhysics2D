@@ -5,12 +5,12 @@ import com.COMPFIZ.underscore.Launcher;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWErrorCallback;
 
-public class EventHandler {
-    public static final long SECOND = 1000000000L/8;//1 second counting in nanoseconds
+public class EventHandler{
+    public static final long SECOND = 1000000000L/15;//1 second counting in nanoseconds
     public static final float FRAMERATE = 120; //Absolute time because only calling game attribs like update(); each defined frame which correspond to time
     public static double totalTime = 0, absoluteTotalTime = 0;//Outside the games FrameCalls totaltime | Total time entire program has been running
     private static int fps;
-    private static float interval = 10000;
+    public static float dt = 1f;
     private static float frametime = 1.0f/FRAMERATE;
     public static float allFrames;
     //Static
@@ -64,7 +64,7 @@ public class EventHandler {
 
             unproccessedTime+=passedTime/(double) SECOND; //5000000000L -> 5 seconds
             frameCounter+=passedTime;
-            totalTime =  allFrames*frametime*interval*FRAMERATE;//120*1/120 = 1 sec
+            totalTime =  allFrames*frametime* dt *FRAMERATE;//120*1/120 = 1 sec
 
 
             input();//Outside render so you can input between frames
@@ -82,12 +82,12 @@ public class EventHandler {
                     winMan.setTitle(Constants.TITLE +" Fps:"  + getFps());
                     frames = 0;
                     frameCounter = 0L;
-                    eventStream = new boolean[1];
+                    eventStream[0] = false;
                 }
             }
 
             if(render){//Happens every time
-                update(interval);
+                update(dt);
                 render();
                 frames++;
                 allFrames++;
@@ -118,8 +118,8 @@ public class EventHandler {
     }
 
     private void cleanup(){
-        winMan.cleanup();
         gameLogic.cleanup();
+        winMan.cleanup();
         errorCallback.free();
         GLFW.glfwTerminate();
     }

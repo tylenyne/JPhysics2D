@@ -8,6 +8,9 @@ import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.system.MemoryUtil;
+
+import java.util.Arrays;
+
 //Large Spaces represent Section
 public class WindowManager {
     //Fields-
@@ -24,6 +27,8 @@ public class WindowManager {
     private boolean resized, vSync;
 
     private final Matrix4f projectionMatrix;
+
+    private String txtinput = "";
 
 
     //Methods-
@@ -79,6 +84,11 @@ public class WindowManager {
                     }
 
                 });
+        GLFW.glfwSetCharCallback(window, (window, chars) -> {
+            if(Character.isDigit(chars) || chars == '.' || chars == 'e'){
+                txtinput = txtinput + Character.toString(chars);
+            }
+        });
 
         if(maximized){
             GLFW.glfwMaximizeWindow(window);
@@ -101,10 +111,6 @@ public class WindowManager {
         GL30.glEnable(GL30.GL_STENCIL_TEST);
         GL30.glEnable(GL30.GL_CULL_FACE);
         GL30.glCullFace(GL30.GL_BACK);
-
-
-
-
     }
 
 
@@ -154,6 +160,14 @@ public class WindowManager {
 
     public Matrix4f getProjectionMatrix() {
         return projectionMatrix;
+    }
+
+    public String getTxtinput(){
+        return txtinput;
+    }
+
+    public void resettxt(){
+        txtinput = "";
     }
 
 

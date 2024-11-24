@@ -38,7 +38,8 @@ public class GPURenderer {
         //this.prepare();
         ShaderForge.connect();
         shader.set((Entity) model[0]);
-        for(int i = 0; i < model.length && model[i] != null; i++) {//Make it so if there are duplicate models you only bind to one and process shaders during
+        for(int i = 0; i < model.length; i++) {//Make it so if there are duplicate models you only bind to one and process shaders during
+            if(model[i] == null) continue;
             GL30.glBindVertexArray(model[i].getVaoID());
             GL30.glEnableVertexAttribArray(0);
             shader.apply((Entity) model[i], cam);//for now

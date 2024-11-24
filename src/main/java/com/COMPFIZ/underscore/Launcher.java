@@ -6,9 +6,7 @@ import com.COMPFIZ.core.Loader;
 import com.COMPFIZ.core.WindowManager;
 import com.COMPFIZ.core.mixins.Constants;
 import com.COMPFIZ.core.shaders.ShaderForge;
-import com.COMPFIZ.underscore.games.Lunar_Golf;
-import com.COMPFIZ.underscore.games.Orrey;
-import com.COMPFIZ.underscore.games.Pumpkin_Chunkin;
+import com.COMPFIZ.underscore.games.*;
 import org.lwjgl.Version;
 
 public class Launcher {//idea- make buffers that only allow inputs every other frame or every 3 frames so that the game feels better
@@ -22,7 +20,7 @@ public class Launcher {//idea- make buffers that only allow inputs every other f
         System.out.println("Version " + Version.getVersion());
         winMan = new WindowManager(Constants.TITLE, 1600, 900, false);
         loader = new Loader();
-        thisGame = new Orrey();
+        thisGame = new Newtons_Cannon();
         EventHandler EM = new EventHandler();
         try {
             EM.start();

@@ -1,5 +1,6 @@
 package com.COMPFIZ.core.mixins;
 
+import org.joml.Vector3d;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
@@ -18,13 +19,13 @@ public class Constants {
     public static final Vector4f DEFAULT_COLOR = new Vector4f(1.0f, 1.0f, 1.0f, 1.0f);
     public static final Vector3f AMBIENT_LIGHT = new Vector3f(.2f, .2f, .2f);
     public static final float SPECULAR_POWER = 10f;
-    public static final Vector3f STDDIR = new Vector3f(0, -1, 0);
+    public static final Vector3d STDDIR = new Vector3d(0, -1, 0);
     public static final float SOG = 9.8f;
-    public static final Vector3f EOG = (STDDIR.mul(SOG, new Vector3f()));
-    public static Vector3f FOG = EOG;
-    public static final double orbitfield = 1/4.545e11d;
+    public static final Vector3d EOG = (STDDIR.mul(SOG, new Vector3d()));
+    public static Vector3d FOG = EOG;
+    public static final double orbitfield = 1/(5906372947200d);//radius from sun to pluto in km
     public static final float physicfield = 1/400f;
-    public static final Vector3f MOG = (STDDIR.mul(moongravity, new Vector3f()));
+    public static final Vector3d MOG = (STDDIR.mul(moongravity, new Vector3d()));
     public static final float STDWEIGHT = 1;
     public static final float STDRHO = 1.225f;
     public static final Vector3f STDCOLOR = new Vector3f(0f, 0f, 0.0f);
